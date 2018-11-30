@@ -33,6 +33,7 @@ async def yn(context):
         'I call thats a definitely a yes.',
         'Probably?',
         'Can we just talk about something else instead of that?',
+        'No! Why would you ask that!?',
     ]
     await client.say(random.choice(possible_responses) + ", " + context.message.author.mention)
 

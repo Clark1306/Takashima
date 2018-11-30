@@ -36,7 +36,7 @@ async def yn(context):
         'Can we just talk about something else instead of that?',
         'No! Why would you ask that!?',
     ]
-    await bot.say(random.choice(possible_responses) + ", " + context.message.author.mention)
+    await bot.say(random.choice(possible_responses) + " " + context.message.author.mention)
 
 @bot.command(pass_context = True)
 async def say(ctx, *args):

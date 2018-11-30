@@ -6,11 +6,25 @@ import os
 import random
 
 bot = commands.Bot(command_prefix="c!")
+bot.remove_command('help')
 
 @bot.event
 async def on_ready():
     await bot.change_presence(game=discord.Game(name="Nya~!"))
     print("I'm ready!")
+
+@bot.command(pass_context=True)
+async def help(ctx):
+    author = ctx.message.author
+    
+    embed = discord.Embed(
+        color = discord.Color.blue()
+    )
+    
+    embed.set_author(name='Help')
+    embed.add_field(name='c!say', value='Makes the bot say something!', inline=False)
+
+    await bot.send_message(author, embed=embed)
 
 @bot.command(name='8ball',
                 description="Answers a yes/no question.",

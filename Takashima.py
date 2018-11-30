@@ -24,11 +24,11 @@ async def yn(context):
         'No.',
         'No! Why would you ask that?!',
         'No u',
-        'Probably, A yes.',
+        'Probably, a yes.',
         'Indeed.',
         'True.',
         'Just leave me alone.',
-        'Eck! No! Why would you ask that?',
+        'Eek! No! Why would you ask that?',
         'Heck no! get away from me!',
         'Uh huh, Maybe..'
         'I call thats a definitely a yes.',

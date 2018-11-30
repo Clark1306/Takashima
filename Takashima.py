@@ -11,7 +11,7 @@ async def on_ready():
     await client.change_presence(game=Game(name="Nya~!"))
     print("I'm ready!")
 
-@client.command(name='8ball',
+@bot.command(name='8ball',
                 description="Answers a yes/no question.",
                 brief="Answers from the beyond.",
                 aliases=['eight_ball', 'eightball', '8-ball'],

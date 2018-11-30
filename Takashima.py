@@ -8,7 +8,7 @@ bot = commands.Bot(command_prefix="c!")
 
 @bot.event
 async def on_ready():
-    await bot.change_status(game=discord.Game(name="Nya~!"))
+    await bot.change_presence(game=discord.Game(name="Nya~!"))
     print("I'm ready!")
 
 @bot.command(name='8ball',

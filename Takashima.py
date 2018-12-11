@@ -74,7 +74,8 @@ async def about(ctx):
     embed.add_field(name='I was created by Clark#8056', value='(Just to be honest why do i even make this)', inline=False)
     embed.add_field(name="I was wondering of my creator would make his server and make me offical, until he is good at programming.", value='(meh)', inline=False)
     embed.add_field(name='Thats it! Have a good day! nya~!', value='(shut up.)', inline=False)
-    await bot.send_message(destination, embed=embed)
+    
+    await bot.say(embed=embed)
 
 @bot.command(name='8ball',
                 description="Answers a yes/no question.",

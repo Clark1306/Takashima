@@ -38,7 +38,7 @@ async def kick(ctx, target:discord.Member):
                         except Exception:
                             await bot.edit_message(msg, new_content="Are you trying to make me kick a higher role than me? That is just rude.")
             else:
-                await bot.edit_message(msg, new_content="I don't think you have permission to execute this..").format(ctx.message.author.mention)
+                await bot.edit_message(msg, new_content="I don't think you have permission to execute this..").format(ctx.message.author.mention.generator)
         else:
             await bot.edit_message(msg, new_content="I don't have the permission to execute this.")
     else:

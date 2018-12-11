@@ -15,7 +15,7 @@ async def on_ready():
 
 @bot.command(pass_context = True)
 async def ban(member: discord.Member, days: int = 1):
-    if "449706643710541824" in [role.id for role in message.author.roles]:
+    if "Bot Access" in [role.id for role in message.author.roles]:
         await bot.ban(member, days)
     else:
         await bot.say("Hey! You don't have permission to do that!")

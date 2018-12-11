@@ -55,7 +55,7 @@ async def help(ctx):
     embed.set_author(name='Fun Commands')
     embed.add_field(name='c!say', value='Makes the bot say something!', inline=False)
     embed.add_field(name='c!8ball', value='Questions your answer!', inline=False)
-    embed.add_field(name='Moderation Commands')
+    embed.add_field(name='Moderation Commands' value=' ', inline=False)
     embed.add_field(name='c!8ball', value='Boots a person from your server or whatever.', inline=False)
     
     await bot.send_message(author, embed=embed)

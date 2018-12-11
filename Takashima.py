@@ -4,6 +4,7 @@ from discord.ext.commands import Bot
 import asyncio
 import os
 import random
+import time
 
 bot = commands.Bot(command_prefix="c!")
 bot.remove_command('help')
@@ -13,12 +14,35 @@ async def on_ready():
     await bot.change_presence(game=discord.Game(name="Nya~!"))
     print("I'm ready!")
 
-@bot.command(pass_context = True)
-async def ban(member: discord.Member, days: int = 1):
-    if "Bot Access" in [role.id for role in message.author.roles]:
-        await bot.ban(member, days)
+@bot.command(pass_context=True,description="Kicks the given member. Please ensure both the bot and the command invoker have the permission 'Kick Members' before running this command.")
+async def kick(ctx, target:discord.Member):
+    """Boot someone outta the server. See 'c!help' for more."""
+    if not str(ctx.message.channel).startswith("Direct Message with "):
+        msg=await bot.say("Checking...")
+        time.sleep(0.5)
+        if ctx.message.server.me.server_permissions.kick_members:
+            if ctx.message.author.server_permissions.kick_members:
+                await bot.edit_message(msg,new_content="Hmmph, this might take a while.")
+                time.sleep(0.5)
+                if target==ctx.message.server.owner:
+                    await bot.edit_message(msg, new_content="Are you trying to make me kick the owner or yourself? That's just.. I don't even know anymore.")
+                else:
+                    if target==ctx.message.server.me:
+                        await bot.edit_message(msg, new_content="M-Me!? Are you trying to make me kick myself!? How dare you! You heartless bastard!")
+                    else:
+                        await bot.edit_message(msg, new_content="Heh! Imma get this person outta of the of your server! or whatever it is.")
+                        time.sleep(2)
+                        try:
+                            await bot.kick(target)
+                            await bot.edit_message(msg, "See you later user!")
+                        except Exception:
+                            await bot.edit_message(msg, new_content="Are you trying to make me kick a higher role than me? That is just rude.")
+            else:
+                await bot.edit_message(msg, new_content="I don't think you have permission to execute this..").format(ctx.message.author.mention)
+        else:
+            await bot.edit_message(msg, new_content="I don't have the permission to execute this.")
     else:
-        await bot.say("Hey! You don't have permission to do that!")
+        await bot.say("This a DM! This command is for servers only.. Try this in a server instead.")
 
 @bot.command(pass_context=True)
 async def help(ctx):

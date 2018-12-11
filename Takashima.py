@@ -13,6 +13,13 @@ async def on_ready():
     await bot.change_presence(game=discord.Game(name="Nya~!"))
     print("I'm ready!")
 
+@bot.command(pass_context = True)
+async def ban(member: discord.Member, days: int = 1):
+    if "449706643710541824" in [role.id for role in message.author.roles]:
+        await bot.ban(member, days)
+    else:
+        await bot.say("Hey! You don't have permission to do that!")
+
 @bot.command(pass_context=True)
 async def help(ctx):
     author = ctx.message.author

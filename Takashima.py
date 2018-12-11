@@ -57,6 +57,7 @@ async def help(ctx):
     embed.add_field(name='c!8ball', value='Questions your answer!', inline=False)
     embed.add_field(name='Moderation Command', value='.', inline=False)
     embed.add_field(name='c!kick', value='Boots a person from your server or whatever.', inline=False)
+    embed.set_footer(text="There would be still more commands to be added, so yeah.")
     
     await bot.send_message(author, embed=embed)
 

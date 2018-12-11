@@ -72,7 +72,7 @@ async def about(ctx):
     embed.set_author(name="About me")
     embed.add_field(name="Hello! My name is Takashima, i'm just a unoffical neko bot! i have no Tons of commands added yet so, it'll be added soon.", value='(kay)', inline=False)
     embed.add_field(name='I was created by Clark#8056', value='(Just to be honest why do i even make this)', inline=False)
-    embed.add_field(name="I was wondering of my creator would make his server and make me offical, until he is good at programming.", value=(meh), inline=False)
+    embed.add_field(name="I was wondering of my creator would make his server and make me offical, until he is good at programming.", value='(meh)', inline=False)
     embed.add_field(name='Thats it! Have a good day! nya~!', value='(shut up.)', inline=False)
     await bot.send_message(embed=embed)
 

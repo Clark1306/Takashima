@@ -69,11 +69,7 @@ async def about(ctx):
         color = discord.Color.blue()
     )
 
-    embed.set_author(name="About me")
-    embed.add_field(name="Hello! My name is Takashima, i'm just a unoffical neko bot! i have no Tons of commands added yet so, it'll be added soon.", value='(kay)', inline=False)
-    embed.add_field(name='I was created by Clark#8056', value='(Just to be honest why do i even make this)', inline=False)
-    embed.add_field(name="I was wondering of my creator would make his server and make me offical, until he is good at programming.", value='(meh)', inline=False)
-    embed.add_field(name='Thats it! Have a good day! nya~!', value='(shut up.)', inline=False)
+    embed.add_field(name="Hello! I'm Takashima-chan, an unofficial neko bot created by Clark#8056 and  AJ#2121! I have moderation and fun commands, some are still being added tho! I'm still being worked on by the developers, there are some errors here and there, but they're trying their best to finish me and add updates!", value="Thats all for now, have a good day! nyah~", inline=True)
     
     await bot.say(embed=embed)
 

@@ -104,7 +104,7 @@ async def yn(context):
     await bot.say(random.choice(possible_responses) + " " + context.message.author.mention)
 
 @bot.command(pass_context=True)
-async def create_channel((server, name, *overwrites, type=None):
+async def create_channel(server, name, *overwrites, type=None):
     everyone_perms = discord.PermissionOverwrite(read_messages=False)
     my_perms = discord.PermissionOverwrite(read_messages=True)
 

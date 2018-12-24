@@ -105,12 +105,9 @@ async def yn(context):
 
 @bot.command(pass_context=True)
 async def delete_channel(channel, name, *overwrites, type=None):
-    everyone_perms = discord.PermissionOverwrite(read_messages=False)
-    my_perms = discord.PermissionOverwrite(read_messages=True)
-
-    everyone = discord.ChannelPermissions(target=channel.Context, overwrite=everyone_perms)
-    mine = discord.ChannelPermissions(target=channel.me, overwrite=my_perms)
-    await bot.delete_channel(channel, 'secret', everyone, mine)
+    everyone = discord.PermissionOverwrite(read_messages=False)
+    mine = discord.PermissionOverwrite(read_messages=True)
+    await client.delete_channel(server, 'secret', (channel.default_role, everyone), (channel.me, mine))
 
 @bot.command(pass_context=True)
 async def say(ctx, *args):

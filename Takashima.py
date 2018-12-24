@@ -69,8 +69,9 @@ async def about(ctx):
         color = discord.Color.blue()
     )
 
-    embed=discord.Embed(title="Hello! I'm Takashima-chan, an unofficial neko bot created by Clark#8056 and  AJ#2121! I have moderation and fun commands, some are still being added tho! I'm still being worked on by the developers, there are some errors here and there, but they're trying their best to finish me and add updates! ", description="Thats all for now, have a good day! nyah~")
+    embed=discord.Embed(title="Hello! I'm Takashima-chan, an unofficial neko bot created by Clark#8056 and  AJ#2121! I have moderation and fun commands, some are still being added tho! I'm still being worked on by the developers, there are some errors here and there, but they're trying their best to finish me and add updates! ")
     embed.set_author(name="===================================================================")
+    embed.add_field(name"====================================================================", value="That's all for now, have a good day! nyah~", inline=True)
     embed.set_footer(text="===============================================================================")
     await bot.say(embed=embed)
 

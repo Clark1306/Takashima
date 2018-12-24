@@ -104,10 +104,9 @@ async def yn(context):
     await bot.say(random.choice(possible_responses) + " " + context.message.author.mention)
 
 @bot.command(pass_context=True)
-async def delete_channel(channel, name, *overwrites, type=None):
-    everyone = discord.PermissionOverwrite(read_messages=False)
-    mine = discord.PermissionOverwrite(read_messages=True)
-    await bot.delete_channel(channel, 'secret', (channel.default_role, everyone), (channel.me, mine))
+async def delete_channel(channel):
+    server = ctx.message.server
+    await bot.delete_channel(channel, 'cool-channel', type=discord.ChannelType.text)
 
 @bot.command(pass_context=True)
 async def say(ctx, *args):

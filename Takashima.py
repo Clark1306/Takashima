@@ -104,13 +104,13 @@ async def yn(context):
     await bot.say(random.choice(possible_responses) + " " + context.message.author.mention)
 
 @bot.command(pass_context=True)
-async def delete_channel(channel):
+async def create_channel((server, name, *overwrites, type=None):
     everyone_perms = discord.PermissionOverwrite(read_messages=False)
     my_perms = discord.PermissionOverwrite(read_messages=True)
 
-    everyone = discord.ChannelPermissions(target=channel.default_role, overwrite=everyone_perms)
-    mine = discord.ChannelPermissions(target=channel.me, overwrite=my_perms)
-    await bot.delete_channel(channel, 'secret', everyone, mine)
+    everyone = discord.ChannelPermissions(target=server.default_role, overwrite=everyone_perms)
+    mine = discord.ChannelPermissions(target=server.me, overwrite=my_perms)
+    await bot.create_channel(server, 'secret', everyone, mine)
 
 @bot.command(pass_context=True)
 async def say(ctx, *args):

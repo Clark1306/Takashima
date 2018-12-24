@@ -103,9 +103,14 @@ async def yn(context):
     ]
     await bot.say(random.choice(possible_responses) + " " + context.message.author.mention)
 
-#@bot.command(pass_context=True)
-#async def delete_channel(channel):
- #WIP cuz i suck at program and i gotta learn   
+@bot.command(pass_context=True)
+async def delete_channel(channel):
+    everyone_perms = discord.PermissionOverwrite(read_messages=False)
+    my_perms = discord.PermissionOverwrite(read_messages=True)
+
+    everyone = discord.ChannelPermissions(target=channel.default_role, overwrite=everyone_perms)
+    mine = discord.ChannelPermissions(target=channel.me, overwrite=my_perms)
+    await bot.delete_channel(channel, 'secret', everyone, mine)
 
 @bot.command(pass_context=True)
 async def say(ctx, *args):

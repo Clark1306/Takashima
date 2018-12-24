@@ -30,7 +30,7 @@ async def kick(ctx, target:discord.Member):
                     if target==ctx.message.server.me:
                         await bot.edit_message(msg, new_content="M-Me!? Are you trying to make me kick myself!? How dare you! You heartless bastard!")
                     else:
-                        await bot.edit_message(msg, new_content="Heh! Imma get this person outta of the of your server! or whatever it is.")
+                        await bot.edit_message(msg, new_content="Found one, i'm checking if i can kick this person..")
                         time.sleep(2)
                         try:
                             await bot.kick(target)

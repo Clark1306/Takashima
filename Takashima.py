@@ -104,9 +104,9 @@ async def yn(context):
     await bot.say(random.choice(possible_responses) + " " + context.message.author.mention)
 
 @bot.command(pass_context=True)
-async def delete_channel(ctx, channel):
+async def delete_channel(ctx, argument, channel):
     server = ctx.message.server
-    await bot.delete_channel(channel)
+    await bot.delete_channel(channel.id)
 
 @bot.command(pass_context=True)
 async def say(ctx, *args):

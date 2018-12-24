@@ -17,7 +17,7 @@ async def on_ready():
 @bot.event
 async def on_command_error(error, ctx):
 
-@bot.command(pass_context=True,description="Kicks the given member. Please ensure both the bot and the command invoker have the permission 'Kick Members' before running this command.")
+@bot.command(pass_context=True, description="Kicks the given member. Please ensure both the bot and the command invoker have the permission 'Kick Members' before running this command.")
 async def kick(ctx, target:discord.Member):
     """Boot someone outta the server. See 'c!help' for more."""
     if not str(ctx.message.channel).startswith("Direct Message with "):

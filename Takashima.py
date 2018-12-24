@@ -106,7 +106,7 @@ async def yn(context):
 @bot.command(pass_context=True)
 async def delete_channel(ctx, *args, channel):
     channel = ctx.message.server
-    await bot.delete_channel(channel.id)
+    await bot.delete_channel(channel.id, channel)
 
 @bot.command(pass_context=True)
 async def say(ctx, *args):

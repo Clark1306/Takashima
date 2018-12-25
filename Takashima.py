@@ -50,7 +50,7 @@ async def help(ctx):
     
     embed = discord.Embed(
         title="| Fun Commands |", description="==================================================="
-        color = discord.Color.blue()
+        colour = discord.Colour.blue()
     )
     
     embed.set_author(name='===================================================')
@@ -68,7 +68,11 @@ async def help(ctx):
 
 @bot.command(pass_context=True)
 async def about(ctx):
-    embed = discord.Embed(title="------------------------------------------------------------------------------------------", description="------------------------------------------------------------------------------------------", color=0x0000ff)
+    embed = discord.Embed(
+        title="------------------------------------------------------------------------------------------", description="------------------------------------------------------------------------------------------",
+        colour = discord.Colour.blue()
+    )
+
     embed.set_author(name="==============================================================")
     embed.add_field(name="Hello! I'm Takashima-chan, an unofficial neko bot created by Clark#8056 and  AJ#2121! I have moderation and fun commands, some are still being added tho! I'm still being worked on by the developers, there are some errors here and there, but they're trying their best to finish me and add updates!", value="That's all for now, have a good day! nyah~", inline=False)
     embed.add_field(name="-----------------------------------------------------------------------------------------", value="-----------------------------------------------------------------------------------------", inline=True)

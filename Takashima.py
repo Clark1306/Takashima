@@ -50,12 +50,11 @@ async def help(ctx):
     author = ctx.message.author
     
     embed = discord.Embed(
-        title="| Fun Commands |",
-        description="==================================================="
-        colour = discord.Colour.blue()
+        color = discord.Color.blue()
     )
     
     embed.set_author(name='===================================================')
+    embed.add_field(name="| Fun Commands |", value="===================================================", inline=True)
     embed.add_field(name="c!say", value="Makes the bot say something!", inline=True)
     embed.add_field(name="c!8ball", value="Answers your question!", inline=True)
     embed.add_field(name="===================================================", value="| Moderation Commands |", inline=False)

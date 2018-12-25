@@ -116,8 +116,8 @@ async def clear(ctx, number):
     async for x in bot.logs_from(ctx.message.channel, limit = number):
         if counter < number:
             await bot.delete_message(x)
-            counter += 1
-            await asyncio.sleep(1) #1.2 second timer so the deleting process can be even
+            counter += 10
+            await asyncio.sleep(0.5) #1.2 second timer so the deleting process can be even
 
 @bot.command(pass_context=True)
 async def say(ctx, *args):

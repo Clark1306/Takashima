@@ -62,7 +62,7 @@ async def help(ctx):
     embed.add_field(name="c!kick", value="Boots a user from your server.", inline=False)
     embed.add_field(name="===================================================", value="| Other Commands |", inline=False)
     embed.add_field(name="===================================================", value="-------", inline=True)
-    embed.add_field(name=c"!about", value="No description..", inline=True)
+    embed.add_field(name="c!about", value="No description..", inline=True)
     embed.add_field(name="-------", value="===================================================", inline=False)
     embed.set_footer(text="There would be still more commands to be added, so yeah.")
     await bot.send_message(author, embed=embed)

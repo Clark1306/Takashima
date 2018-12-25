@@ -116,9 +116,18 @@ async def clear(ctx, number):
     async for x in bot.logs_from(ctx.message.channel, limit = number):
         if counter < number:
             await bot.delete_message(x)
-            counter += 10
+            counter += 0.5
             await asyncio.sleep(0.5) #1.2 second timer so the deleting process can be even
 
+@bot.command(pass_context = True)
+async def meme(ctx):
+    memes_submissions = reddit.subreddit('memes').hot()
+    post_to_pick = random.randint(1, 10)
+    for i in range(0, post_to_pick):
+        submission = next(x for x in memes_submissions if not x.stickied)
+
+    await bot.say(submission.url)
+            
 @bot.command(pass_context=True)
 async def say(ctx, *args):
     mesg = ' '.join(args)

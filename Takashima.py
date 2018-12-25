@@ -45,7 +45,7 @@ async def kick(ctx, target:discord.Member):
         await bot.say("This a DM! This command is for servers only.. Try this in a server instead.")
 
 @bot.command(pass_context=True)
-async def help(ctx):
+async def help():
     author = ctx.message.author
     
     embed = discord.Embed(
@@ -68,7 +68,7 @@ async def help(ctx):
     await bot.send_message(author, embed=embed)
 
 @bot.command(pass_context=True)
-async def about(ctx):
+async def about():
     embed = discord.Embed(
         title="------------------------------------------------------------------------------------------",
         description="------------------------------------------------------------------------------------------",

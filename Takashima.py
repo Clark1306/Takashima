@@ -110,6 +110,12 @@ async def delete_channel(ctx, channel: discord.Channel):
     await bot.delete_channel(channel)
 
 @bot.command(pass_context=True)
+async def invite(self, ctx):
+		"""Outputs a url you can use to invite me to your server."""
+		myInvite = discord.utils.oauth_url(self.bot.user.id, permissions=discord.Permissions(permissions=8))
+		await self.bot.send_message(ctx.message.channel, 'Invite me to *your* server with this link: \n\n{}'.format(myInvite)) 
+    
+@bot.command(pass_context=True)
 async def say(ctx, *args):
     mesg = ' '.join(args)
     await bot.delete_message(ctx.message)

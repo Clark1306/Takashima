@@ -108,24 +108,6 @@ async def yn(context):
 @bot.command(pass_context=True)
 async def delete_channel(ctx, channel: discord.Channel):
     await bot.delete_channel(channel)
-
-@bot.command(pass_context=True)
-async def on_message(message):
-	if message.channel.id == "526659931252981763":
-		if message.content.startswith("=invite"):
-			async for msg in client.logs_from(message.channel):
-				if(msg.id != "526659931252981763"):
-					await client.delete_message(msg)
-			server = message.server
-			invite = await client.create_invite(client.get_channel("526659931252981763"), max_uses=1,unique=False)
-			await client.send_message(message.channel, invite)
-		elif message.author.id != botid:
-			await client.delete_message(message)
-	if message.content.startswith("=clearauto"):
-		if message.author.id == botadmin:
-			async for msg in client.logs_from(message.channel):
-				await client.delete_message(msg)
-	await client.process_commands(message)
     
 @bot.command(pass_context=True)
 async def say(ctx, *args):

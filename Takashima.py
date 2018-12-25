@@ -70,6 +70,7 @@ async def help(ctx):
 
 @bot.command(pass_context=True)
 async def about():
+    channel = ctx.message.channel
     embed = discord.Embed(
         title="------------------------------------------------------------------------------------------",
         description="------------------------------------------------------------------------------------------",
@@ -81,7 +82,7 @@ async def about():
     embed.add_field(name="-----------------------------------------------------------------------------------------", value="-----------------------------------------------------------------------------------------", inline=True)
     embed.set_footer(text="=========================================================================")
 
-    await bot.say(embed=embed)
+    await bot.send_message(channel, embed=embed)
 
 @bot.command(name='8ball',
                 description="Answers a yes/no question.",

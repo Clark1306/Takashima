@@ -121,7 +121,7 @@ async def clear(ctx, number):
             await asyncio.sleep(0.5) #1.2 second timer so the deleting process can be even
 
 reddit = praw.Reddit(client_id='512896186374684673',
-                     user_agent='Clark#8056')
+                     user_agent='Exeka')
 
 @bot.command(pass_context = True)
 async def meme(ctx):

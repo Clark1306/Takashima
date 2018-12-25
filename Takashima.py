@@ -49,23 +49,26 @@ async def help(ctx):
     author = ctx.message.author
     
     embed = discord.Embed(
+        title="| Fun Commands |", description="==================================================="
         color = discord.Color.blue()
     )
     
-    embed.set_author(name='Fun Commands')
-    embed.add_field(name='c!say', value='Makes the bot say something!', inline=False)
-    embed.add_field(name='c!8ball', value='Questions your answer!', inline=False)
-    embed.add_field(name='Moderation Command', value='.', inline=False)
-    embed.add_field(name='c!kick', value='Boots a person from your server or whatever.', inline=False)
-    embed.add_field(name='Other Commands', value='.', inline=False)
-    embed.add_field(name='c!about', value='Knowing about me! Well, kinda bad explain and stuff, i will improve it later.', inline=False)
+    embed.set_author(name='===================================================')
+    embed.add_field(name="c!say", value="Makes the bot say something!", inline=True)
+    embed.add_field(name="c!8ball", value="Answers your question!", inline=True)
+    embed.add_field(name="===================================================", value="| Moderation Commands |", inline=False)
+    embed.add_field(name="===================================================", value="------", inline=False)
+    embed.add_field(name="c!kick", value="Boots a user from your server.", inline=False)
+    embed.add_field(name="===================================================", value="| Other Commands |", inline=False)
+    embed.add_field(name="===================================================", value="-------", inline=True)
+    embed.add_field(name=c"!about", value="No description..", inline=True)
+    embed.add_field(name="-------", value="===================================================", inline=False)
     embed.set_footer(text="There would be still more commands to be added, so yeah.")
-    
     await bot.send_message(author, embed=embed)
 
 @bot.command(pass_context=True)
 async def about(ctx):
-    embed=discord.Embed(title="------------------------------------------------------------------------------------------", description="------------------------------------------------------------------------------------------", color=0x0000ff)
+    embed = discord.Embed(title="------------------------------------------------------------------------------------------", description="------------------------------------------------------------------------------------------", color=0x0000ff)
     embed.set_author(name="==============================================================")
     embed.add_field(name="Hello! I'm Takashima-chan, an unofficial neko bot created by Clark#8056 and  AJ#2121! I have moderation and fun commands, some are still being added tho! I'm still being worked on by the developers, there are some errors here and there, but they're trying their best to finish me and add updates!", value="That's all for now, have a good day! nyah~", inline=False)
     embed.add_field(name="-----------------------------------------------------------------------------------------", value="-----------------------------------------------------------------------------------------", inline=True)

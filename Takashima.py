@@ -108,16 +108,31 @@ async def yn(context):
 @bot.command(pass_context=True)
 async def delete_channel(ctx, channel: discord.Channel):
     await bot.delete_channel(channel)
-    
-@bot.command(pass_context = True)
-async def clear(ctx, number):
-    number = int(number) #Converting the amount of messages to delete to an integer
-    counter = 0
-    async for x in bot.logs_from(ctx.message.channel, limit = number):
-        if counter < number:
-            await bot.delete_message(x)
-            counter += 1
-            await asyncio.sleep(0.5) #1.2 second timer so the deleting process can be even
+
+@bot.command(pass_context=True)
+async def clear(args, message, client, invoke):
+
+    try:
+        ammount = int(args[0]) + 1 if len(args) > 0 else 2
+    except:
+        await client.send_message(message.channel, embed=discord.Embed(color=discord.Color.red(), descrition="Please enter a valid value for message ammount!"))
+        return
+
+    cleared = 0
+    failed = 0
+
+    async for m in client.logs_from(message.channel, limit=ammount):
+        try:
+            await client.delete_message(m)
+            cleared += 1
+        except:
+            failed += 1
+            pass
+
+    failed_str = "\n\nFailed to clear %s message(s)." % failed if failed > 0 else ""
+    returnmsg = await client.send_message(message.channel, embed=discord.Embed(color=discord.Color.blue(), description="Cleared %s message(s).%s" % (cleared, failed_str)))
+    await asyncio.sleep(4)
+    await client.delete_message(returnmsg)
             
 @bot.command(pass_context=True)
 async def say(ctx, *args):

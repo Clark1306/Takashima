@@ -3,9 +3,9 @@ from discord.ext import commands
 from discord.ext.commands import Bot
 import asyncio
 import os
+import praw
 import random
 import time
-import praw
 
 bot = commands.Bot(command_prefix="c!")
 bot.remove_command('help')
@@ -117,7 +117,7 @@ async def clear(ctx, number):
     async for x in bot.logs_from(ctx.message.channel, limit = number):
         if counter < number:
             await bot.delete_message(x)
-            counter += 0.5
+            counter += 1
             await asyncio.sleep(0.5) #1.2 second timer so the deleting process can be even
 
 reddit = praw.Reddit(client_id='512896186374684673',

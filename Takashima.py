@@ -115,24 +115,24 @@ async def clear(args, message, client, invoke):
     try:
         ammount = int(args[0]) + 1 if len(args) > 0 else 2
     except:
-        await client.send_message(message.channel, embed=discord.Embed(color=discord.Color.red(), descrition="Please enter a valid value for message ammount!"))
+        await bot.send_message(message.channel, embed=discord.Embed(color=discord.Color.red(), descrition="Please enter a valid value for message ammount!"))
         return
 
     cleared = 0
     failed = 0
 
-    async for m in client.logs_from(message.channel, limit=ammount):
+    async for m in bot.logs_from(message.channel, limit=ammount):
         try:
-            await client.delete_message(m)
+            await bot.delete_message(m)
             cleared += 1
         except:
             failed += 1
             pass
 
     failed_str = "\n\nFailed to clear %s message(s)." % failed if failed > 0 else ""
-    returnmsg = await client.send_message(message.channel, embed=discord.Embed(color=discord.Color.blue(), description="Cleared %s message(s).%s" % (cleared, failed_str)))
+    returnmsg = await bot.send_message(message.channel, embed=discord.Embed(color=discord.Color.blue(), description="Cleared %s message(s).%s" % (cleared, failed_str)))
     await asyncio.sleep(4)
-    await client.delete_message(returnmsg)
+    await bot.delete_message(returnmsg)
             
 @bot.command(pass_context=True)
 async def say(ctx, *args):

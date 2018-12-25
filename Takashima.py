@@ -109,8 +109,7 @@ async def yn(context):
 async def delete_channel(ctx, channel: discord.Channel):
     await bot.delete_channel(channel)
 
-@bot.command(pass_context=True)
-async def clear(args, message, invoke):
+async def clear(args, message, bot, invoke):
 
     try:
         ammount = int(args[0]) + 1 if len(args) > 0 else 2

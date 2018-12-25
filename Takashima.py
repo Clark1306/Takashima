@@ -3,7 +3,6 @@ from discord.ext import commands
 from discord.ext.commands import Bot
 import asyncio
 import os
-import praw
 import random
 import time
 
@@ -119,18 +118,6 @@ async def clear(ctx, number):
             await bot.delete_message(x)
             counter += 1
             await asyncio.sleep(0.5) #1.2 second timer so the deleting process can be even
-
-reddit = praw.Reddit(client_id='512896186374684673',
-                     user_agent='Exeka')
-
-@bot.command(pass_context = True)
-async def meme(ctx):
-    memes_submissions = reddit.subreddit('memes').hot()
-    post_to_pick = random.randint(1, 10)
-    for i in range(0, post_to_pick):
-        submission = next(x for x in memes_submissions if not x.stickied)
-
-    await bot.say(submission.url)
             
 @bot.command(pass_context=True)
 async def say(ctx, *args):

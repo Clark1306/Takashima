@@ -5,7 +5,6 @@ import asyncio
 import os
 import random
 import time
-import bot
 
 bot = commands.Bot(command_prefix="c!")
 bot.remove_command('help')
@@ -111,7 +110,7 @@ async def delete_channel(ctx, channel: discord.Channel):
     await bot.delete_channel(channel)
 
 @bot.command(pass_context=True)
-async def clear(args, message, bot, invoke):
+async def clear(args, message, invoke):
 
     try:
         ammount = int(args[0]) + 1 if len(args) > 0 else 2

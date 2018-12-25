@@ -49,8 +49,9 @@ async def help(ctx):
     author = ctx.message.author
     
     embed = discord.Embed(
-        title="| Fun Commands |", description="==================================================="
-        colour = discord.Colour.blue()
+        title="| Fun Commands |",
+        description="==================================================="
+        color = discord.Color.blue()
     )
     
     embed.set_author(name='===================================================')
@@ -69,8 +70,9 @@ async def help(ctx):
 @bot.command(pass_context=True)
 async def about(ctx):
     embed = discord.Embed(
-        title="------------------------------------------------------------------------------------------", description="------------------------------------------------------------------------------------------",
-        colour = discord.Colour.blue()
+        title="------------------------------------------------------------------------------------------",
+        description="------------------------------------------------------------------------------------------",
+        color = discord.Color.blue()
     )
 
     embed.set_author(name="==============================================================")

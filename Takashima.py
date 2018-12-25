@@ -69,14 +69,13 @@ async def help(ctx):
 async def about(ctx):
     channel = ctx.message.channel
     embed = discord.Embed(
-        title="------------------------------------------------------------------------------------------",
-        description="------------------------------------------------------------------------------------------",
         colour = discord.Colour.blue()
     )
 
     embed.set_author(name="==============================================================")
-    embed.add_field(name="Hello! I'm Takashima-chan, an unofficial neko bot created by Clark#8056 and  AJ#2121! I have moderation and fun commands, some are still being added tho! I'm still being worked on by the developers, there are some errors here and there, but they're trying their best to finish me and add updates!", value="That's all for now, have a good day! nyah~", inline=False)
-    embed.set_footer(text="=========================================================================")
+    embed.add_field(name="Hello! I'm Takashima-chan, I have moderation and fun commands, some are still being added tho! I'm still being worked on by the developers, there are some errors here and there, but they're trying their best to finish me and add updates!", value="an unofficial neko bot created by Clark#8056 and  AJ#2121!", inline=False)
+    embed.add_field(name="I have moderation and fun commands, some are still being added tho! I'm still being worked on by the developers,", value="there are some errors here and there, but they're trying their best to finish me and add updates!", inline=False)
+    embed.add_field(name="That's all for now, have a good day! nyah~", value="=========================================================================", inline=False)
     
     await bot.send_message(channel, embed=embed)
 

@@ -109,29 +109,15 @@ async def yn(context):
 async def delete_channel(ctx, channel: discord.Channel):
     await bot.delete_channel(channel)
 
-async def clear(args, message, bot, invoke):
-
-    try:
-        ammount = int(args[0]) + 1 if len(args) > 0 else 2
-    except:
-        await bot.send_message(message.channel, embed=discord.Embed(color=discord.Color.red(), descrition="Please enter a valid value for message ammount!"))
-        return
-
-    cleared = 0
-    failed = 0
-
-    async for m in bot.logs_from(message.channel, limit=ammount):
-        try:
-            await bot.delete_message(m)
-            cleared += 1
-        except:
-            failed += 1
-            pass
-
-    failed_str = "\n\nFailed to clear %s message(s)." % failed if failed > 0 else ""
-    returnmsg = await bot.send_message(message.channel, embed=discord.Embed(color=discord.Color.blue(), description="Cleared %s message(s).%s" % (cleared, failed_str)))
-    await asyncio.sleep(4)
-    await bot.delete_message(returnmsg)
+@bot.command(pass_context=True)
+async def clear(ctx, amount=int):
+    channel = ctx.message.channel
+    message = []
+    async for message in bot.log_from(channel, limit=int(amount) + 1):
+        messages.append(message)
+    await bot.delete_messages(messages)
+    await bot.say("Successfully Deleted Messages")
+    return await bot.delete_messages(messages)
             
 @bot.command(pass_context=True)
 async def say(ctx, *args):

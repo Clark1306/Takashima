@@ -113,7 +113,7 @@ async def delete_channel(ctx, channel: discord.Channel):
 async def clear(ctx, amount=int):
     channel = ctx.message.channel
     message = []
-    async for message in bot.log_from(channel, limit=int(amount) + 1):
+    async for message in bot.logs_from(channel, limit=int(amount) + 1):
         messages.append(message)
     await bot.delete_messages(messages)
     await bot.say("Successfully Deleted Messages")

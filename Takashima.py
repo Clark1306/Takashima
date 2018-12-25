@@ -68,7 +68,7 @@ async def help(ctx):
     await bot.send_message(author, embed=embed)
 
 @bot.command(pass_context=True)
-async def about():
+async def about(ctx):
     channel = ctx.message.channel
     embed = discord.Embed(
         title="------------------------------------------------------------------------------------------",

@@ -75,7 +75,7 @@ async def about(ctx):
     embed.set_author(name="==============================================================")
     embed.add_field(name="Hello! I'm Takashima-chan,", value="an unofficial neko bot created by Clark#8056 and  AJ#2121!", inline=False)
     embed.add_field(name="I have moderation and fun commands, some are still being added tho! I'm still being worked on by the developers,", value="there are some errors here and there, but they're trying their best to finish me and add updates!", inline=False)
-    embed.add_field(name="That's all for now, have a good day! nyah~", value="=========================================================================", inline=False)
+    embed.add_field(name="That's all for now, have a good day! nyah~", value="==============================================================", inline=False)
     
     await bot.send_message(channel, embed=embed)
 

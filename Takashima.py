@@ -117,7 +117,6 @@ async def clear(ctx, amount=999999999999999999999999999999999999999999999999):
         messages.append(message)
     await bot.delete_messages(messages)
     await bot.say("Successfully Deleted Messages")
-    return await bot.delete_messages(messages)
             
 @bot.command(pass_context=True)
 async def say(ctx, *args):

@@ -55,10 +55,10 @@ async def help(ctx):
     embed.add_field(name="c!8ball", value="Answers your question!", inline=True)
     embed.add_field(name="===================================================", value="| Moderation Commands |", inline=False)
     embed.add_field(name="c!kick", value="Boots a user from your server.", inline=True)
+    embed.add_field(name="c!clear", value="Removes some of the messages."
     embed.add_field(name="===================================================", value="| Other Commands |", inline=False)
     embed.add_field(name="c!about", value="No description..", inline=True)
-    embed.add_field(name="-------", value="===================================================", inline=False)
-    embed.set_footer(text="There would be still more commands to be added, so yeah.")
+    embed.set_footer(text="===================================================")
     await bot.send_message(author, embed=embed)
 
 @bot.command(pass_context=True)
@@ -105,6 +105,20 @@ async def yn(context):
 async def delete_channel(ctx, channel: discord.Channel):
     await bot.delete_channel(channel)
     await bot.delete_message(ctx.message)
+
+@bot.command(pass_context=True)
+@commands.has_role("Astral Code")
+async def raid_help(ctx)
+    author = ctx.message.author
+    
+    embed = discord.Embed(
+        color = discord.Color.blue()
+    )
+    
+    embed.set_author(name='===================================================')
+    embed.add_field(name="| Special Command |", value="-", inline=False)
+    embed.add_field(name="c!delete_channel", value="Deletes one of the channel.", inline=True)
+    await bot.send_message(author, embed=embed)
 
 @bot.command(pass_context=True)
 async def clear(ctx, amount=999999999999999999999999999999999999999999999999):

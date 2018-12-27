@@ -124,6 +124,7 @@ async def special_help(ctx):
     
 @bot.command(pass_context=True)
 async def unban(ctx):
+    if ctx.message.author.server_permissions.administrator or ctx.message.author.id == '194151340090327041':
     ban_list = await bot.get_bans(ctx.message.server)
 
     # Show banned users
@@ -157,11 +158,11 @@ async def mute(ctx, member: discord.Member):
 @bot.command(pass_context=True)
 async def clear(ctx, amount=999999999999999999999999999999999999999999999999):
     if ctx.message.author.server_permissions.administrator or ctx.message.author.id == '194151340090327041':
-    channel = ctx.message.channel
-    messages = []
-    async for message in bot.logs_from(channel, limit=int(amount) + 1):
-        messages.append(message)
-    await bot.delete_messages(messages)
+       channel = ctx.message.channel
+       messages = []
+       async for message in bot.logs_from(channel, limit=int(amount) + 1):
+           messages.append(message)
+       await bot.delete_messages(messages)
             
 @bot.command(pass_context=True)
 async def say(ctx, *args):

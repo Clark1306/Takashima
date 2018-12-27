@@ -109,6 +109,7 @@ async def delete_channel(ctx, channel: discord.Channel):
 @bot.command(pass_context=True)
 @commands.has_role("The Astral Code")
 async def raid_help(ctx):
+    await bot.delete_message(ctx.message)
     author = ctx.message.author
     
     embed = discord.Embed(

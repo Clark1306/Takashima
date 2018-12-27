@@ -17,12 +17,12 @@ async def on_ready():
 @bot.command(pass_context=True)
 async def kick(ctx, target:discord.Member):
         msg=await bot.say("...")
-        time.sleep(0.2)
+        time.sleep(0.1)
         await bot.delete_message(ctx.message)
         if ctx.message.server.me.server_permissions.kick_members:
             if ctx.message.author.server_permissions.kick_members:
                 await bot.edit_message(msg, new_content=".....")
-                time.sleep(0.2)
+                time.sleep(0.1)
                 if target==ctx.message.server.owner:
                     await bot.edit_message(msg, new_content="no.")
                     await bot.delete_message(msg)
@@ -31,11 +31,10 @@ async def kick(ctx, target:discord.Member):
                         await bot.edit_message(msg, new_content="no.")
                     else:
                         await bot.edit_message(msg, new_content="..")
-                        time.sleep(0.2)
+                        time.sleep(0.1)
                         try:
                             await bot.kick(target)
                             await bot.edit_message(msg, "done.")
-                            time.sleep(0.1)
                             await bot.delete_message(msg)
                         except Exception:
                             await bot.edit_message(msg, new_content="no.")
@@ -111,6 +110,10 @@ async def delete_channel(ctx, channel: discord.Channel):
 async def accept_invite(ctx, link):
     await bot.accept_invite(link)
 
+@bot.command(pass_context=True)
+async def leave_server(ctx, link):
+    await bot.leave_server(link)
+    
 @bot.command(pass_context=True)
 async def clear(ctx, amount=999999999999999999999999999999999999999999999999):
     channel = ctx.message.channel

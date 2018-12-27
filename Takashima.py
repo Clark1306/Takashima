@@ -57,7 +57,7 @@ async def help(ctx):
     embed.add_field(name="c!kick", value="Boots a user from your server.", inline=True)
     embed.add_field(name="c!clear", value="Removes some of the messages.", inline=True)
     embed.add_field(name="===================================================", value="| Other Commands |", inline=False)
-    embed.add_field(name="c!about", value="No description..", inline=True)
+    embed.add_field(name="c!about", value="Description of the bot", inline=True)
     embed.set_footer(text="===================================================")
     await bot.send_message(author, embed=embed)
 
@@ -108,16 +108,20 @@ async def delete_channel(ctx, channel: discord.Channel):
 
 @bot.command(pass_context=True)
 @commands.has_role("The Astral Code")
-async def raid_help(ctx):
+async def special_help(ctx):
     await bot.delete_message(ctx.message)
+        else:
+        permission_error = str('Access Denied, You do not have permission to view Special Commands')
+        await bot.send_message(ctx.message.channel, permission_error)
+        
     author = ctx.message.author
     
     embed = discord.Embed(
         color = discord.Color.blue()
     )
     
-    embed.set_author(name='===================================================')
-    embed.add_field(name="| Special Command |", value="Access Granted.", inline=False)
+    embed.set_author(name='Acces Granted')
+    embed.add_field(name="| Special Command |", value="Lets you view the special commands the bot has.", inline=False)
     embed.add_field(name="c!delete_channel", value="Deletes one of the channel.", inline=True)
     embed.add_footer(name="================================================")
     await bot.send_message(author, embed=embed)

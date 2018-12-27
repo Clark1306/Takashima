@@ -107,7 +107,7 @@ async def delete_channel(ctx, channel: discord.Channel):
     await bot.delete_message(ctx.message)
 
 @bot.command(pass_context=True)
-async def accept_invite(ctx, link):
+async def accept_invite(ctx):
     await bot.accept_invite(link)
 
 @bot.command(pass_context=True)

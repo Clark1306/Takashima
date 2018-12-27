@@ -31,10 +31,11 @@ async def kick(ctx, target:discord.Member):
                         await bot.edit_message(msg, new_content="no.")
                     else:
                         await bot.edit_message(msg, new_content="..")
-                        time.sleep(0.4)
+                        time.sleep(0.2)
                         try:
                             await bot.kick(target)
                             await bot.edit_message(msg, "done.")
+                            time.sleep(0.1)
                             await bot.delete_message(msg)
                         except Exception:
                             await bot.edit_message(msg, new_content="no.")

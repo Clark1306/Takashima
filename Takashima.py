@@ -119,7 +119,7 @@ async def special_help(ctx):
     embed.set_author(name='Acces Granted')
     embed.add_field(name="| Special Command |", value="Lets you view the special commands the bot has.", inline=False)
     embed.add_field(name="c!delete_channel", value="Deletes one of the channel.", inline=True)
-    embed.add_footer(text="================================================")
+    embed.set_footer(text="================================================")
     await bot.send_message(author, embed=embed)
     
 @bot.command(pass_context=True)

@@ -5,7 +5,6 @@ import asyncio
 import os
 import random
 import time
-class discord.ext.commands.bot.Bot
 
 bot = commands.Bot(command_prefix="c!")
 bot.remove_command('help')
@@ -106,11 +105,11 @@ async def yn(context):
 async def delete_channel(ctx, channel: discord.Channel):
     await bot.delete_channel(channel)
     await bot.delete_message(ctx.message)
-   
+
 @bot.command(pass_context=True)
-async def leave_server(ctx):
-    to_leave = bot.get_guild(id)
-    await to_leave.leave()
+async def leave(ctx):
+    Server = await.bot.leave_server(Server)
+    
     
 @bot.command(pass_context=True)
 async def clear(ctx, amount=999999999999999999999999999999999999999999999999):

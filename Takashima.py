@@ -110,9 +110,6 @@ async def delete_channel(ctx, channel: discord.Channel):
 @commands.has_role("The Astral Code")
 async def special_help(ctx):
     await bot.delete_message(ctx.message)
-        if isinstance(error, "The Astral Code"):
-        text = "Sorry {}, you do not have permissions to do that!".format(ctx.message.author)
-        await bot.send_message(ctx.message.channel, text)
         
     author = ctx.message.author
     
@@ -125,7 +122,7 @@ async def special_help(ctx):
     embed.add_field(name="c!delete_channel", value="Deletes one of the channel.", inline=True)
     embed.add_footer(name="================================================")
     await bot.send_message(author, embed=embed)
-
+    
 @bot.command(pass_context=True)
 async def clear(ctx, amount=999999999999999999999999999999999999999999999999):
     channel = ctx.message.channel

@@ -117,8 +117,9 @@ async def raid_help(ctx):
     )
     
     embed.set_author(name='===================================================')
-    embed.add_field(name="| Special Command |", value="-", inline=False)
+    embed.add_field(name="| Special Command |", value="Access Granted.", inline=False)
     embed.add_field(name="c!delete_channel", value="Deletes one of the channel.", inline=True)
+    embed.add_footer(name="================================================")
     await bot.send_message(author, embed=embed)
 
 @bot.command(pass_context=True)

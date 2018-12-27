@@ -15,12 +15,30 @@ async def on_ready():
     print("I'm ready!")
 
 @bot.command(pass_context=True)
-async def kick(ctx, userName: discord.User):
-    await bot.kick(userName)
-    await bot.delete_message(ctx.message)
-    except Exception:
-    await bot.send_message(msg, new_content="no.")
-    return await bot.delete_message(ctx.message)
+async def kick(ctx, target:discord.Member):
+        msg=await bot.say("...")
+        time.sleep(0.1)
+        await bot.delete_message(msg, ctx,message)
+        if ctx.message.server.me.server_permissions.kick_members:
+            if ctx.message.author.server_permissions.kick_members:
+                await bot.edit_message(msg, new_content=".....")
+                time.sleep(0.1)
+                if target==ctx.message.server.owner:
+                    await bot.edit_message(msg, new_content="no.")
+                    await bot.delete_message(msg, ctx.message)
+                else:
+                    if target==ctx.message.server.me:
+                        await bot.edit_message(msg, new_content="no.")
+                    else:
+                        await bot.edit_message(msg, new_content="..")
+                        time.sleep(0.2)
+                        try:
+                            await bot.kick(target)
+                            await bot.edit_message(msg, "done.")
+                            await bot.delete_message(msg, ctx.message)
+                        except Exception:
+                            await bot.edit_message(msg, new_content="no.")
+                            await bot.delete_message(msg, ctx.message)
     
 @bot.command(pass_context=True)
 async def help(ctx):

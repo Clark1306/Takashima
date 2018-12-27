@@ -18,14 +18,14 @@ async def on_ready():
 async def kick(ctx, target:discord.Member):
         msg=await bot.say("...")
         time.sleep(0.1)
-        await bot.delete_message(msg, ctx.message)
+        await bot.delete_message(msg)
         if ctx.message.server.me.server_permissions.kick_members:
             if ctx.message.author.server_permissions.kick_members:
                 await bot.edit_message(msg, new_content=".....")
                 time.sleep(0.1)
                 if target==ctx.message.server.owner:
                     await bot.edit_message(msg, new_content="no.")
-                    await bot.delete_message(msg, ctx.message)
+                    await bot.delete_message(msg)
                 else:
                     if target==ctx.message.server.me:
                         await bot.edit_message(msg, new_content="no.")
@@ -35,10 +35,10 @@ async def kick(ctx, target:discord.Member):
                         try:
                             await bot.kick(target)
                             await bot.edit_message(msg, "done.")
-                            await bot.delete_message(msg, ctx.message)
+                            await bot.delete_message(msg)
                         except Exception:
                             await bot.edit_message(msg, new_content="no.")
-                            await bot.delete_message(msg, ctx.message)
+                            await bot.delete_message(msg)
     
 @bot.command(pass_context=True)
 async def help(ctx):

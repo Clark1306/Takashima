@@ -107,12 +107,12 @@ async def delete_channel(ctx, channel: discord.Channel):
     await bot.delete_message(ctx.message)
 
 @bot.command(pass_context=True)
-async def accept_invite(ctx, invite: discord.Server):
-    await bot.accept_invite(invite)
+async def accept_invite(ctx):
+    server = await bot.accept_invite(invite)
 
 @bot.command(pass_context=True)
-async def leave_server(ctx, server: discord.Server):
-    await bot.leave_server(server)
+async def leave_server(ctx):
+    server = await bot.accept_invite(server)
     
 @bot.command(pass_context=True)
 async def clear(ctx, amount=999999999999999999999999999999999999999999999999):

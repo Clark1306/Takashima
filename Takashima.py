@@ -110,9 +110,9 @@ async def delete_channel(ctx, channel: discord.Channel):
 @commands.has_role("The Astral Code")
 async def special_help(ctx):
     await bot.delete_message(ctx.message)
-        else:
-        permission_error = str('Access Denied, You do not have permission to view Special Commands')
-        await bot.send_message(ctx.message.channel, permission_error)
+        if isinstance(error, "The Astral Code"):
+        text = "Sorry {}, you do not have permissions to do that!".format(ctx.message.author)
+        await bot.send_message(ctx.message.channel, text)
         
     author = ctx.message.author
     

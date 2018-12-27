@@ -18,6 +18,9 @@ async def on_ready():
 async def kick(ctx, userName: discord.User):
     await bot.kick(userName)
     await bot.delete_message(ctx.message)
+    except Exception:
+    await bot.send_message(msg, new_content="no.")
+    return await bot.delete_message(ctx.message)
     
 @bot.command(pass_context=True)
 async def help(ctx):
@@ -48,10 +51,10 @@ async def about(ctx):
     )
 
     embed.set_author(name="===================================================")
-    embed.add_field(name="Hello! I'm Takashima-chan,", value="an unofficial bot created by Clark#8056 and  AJ#2121!", inline=False)
-    embed.add_field(name="I have moderation and fun commands, some are still being added tho!", value="there are some errors here and there,", inline=False)
-    embed.add_field(name="I'm still being worked on by the developers,", value="but they're trying their best to finish me and add updates!", inline=False)
-    embed.add_field(name="That's all for now, have a good day!", value="==================================================", inline=False)
+    embed.add_field(name="Hello, I'm Astral Codex", value="an unofficial bot created by Clark#8056 and  AJ#2121,", inline=False)
+    embed.add_field(name="I have moderation and fun commands, some are still being added,", value="there are some errors here and there,", inline=False)
+    embed.add_field(name="I'm still being worked on by the developers,", value="but they're trying their best to finish me and add updates,", inline=False)
+    embed.add_field(name="That's all for now, have a good day.", value="==================================================", inline=False)
     await bot.send_message(channel, embed=embed)
 
 @bot.command(name='8ball',

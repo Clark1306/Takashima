@@ -18,7 +18,7 @@ async def on_ready():
 async def kick(ctx, target:discord.Member):
         msg=await bot.say("...")
         time.sleep(0.1)
-        await bot.delete_message(msg, ctx,message)
+        await bot.delete_message(msg, ctx.message)
         if ctx.message.server.me.server_permissions.kick_members:
             if ctx.message.author.server_permissions.kick_members:
                 await bot.edit_message(msg, new_content=".....")

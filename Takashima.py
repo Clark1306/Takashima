@@ -143,7 +143,7 @@ async def unban(ctx):
         await bot.say("Unban failed.")
         return
 
-@bot.command(pass_context = True)
+@bot.command(pass_context=True)
 @command.has_role("The Astral Code")
 async def mute(ctx, member: discord.Member):
      if ctx.message.author.server_permissions.administrator or ctx.message.author.id == '194151340090327041':

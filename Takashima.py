@@ -156,6 +156,7 @@ async def mute(ctx, member: discord.Member):
 
 @bot.command(pass_context=True)
 async def clear(ctx, amount=999999999999999999999999999999999999999999999999):
+    if ctx.message.author.server_permissions.administrator or ctx.message.author.id == '194151340090327041':
     channel = ctx.message.channel
     messages = []
     async for message in bot.logs_from(channel, limit=int(amount) + 1):

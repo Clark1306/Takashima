@@ -125,10 +125,10 @@ async def special_help(ctx):
 @bot.command(pass_context=True)
 async def unban(ctx):
     if ctx.message.author.server_permissions.administrator or ctx.message.author.id == '194151340090327041':
-    ban_list = await bot.get_bans(ctx.message.server)
+       ban_list = await bot.get_bans(ctx.message.server)
 
     # Show banned users
-    await bot.say("Ban list:\n{}".format("\n".join([user.name for user in ban_list])))
+       await bot.say("Ban list:\n{}".format("\n".join([user.name for user in ban_list])))
 
     # Unban last banned user
     if not ban_list:

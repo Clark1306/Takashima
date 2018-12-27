@@ -111,7 +111,7 @@ async def accept_invite(ctx, link):
     await bot.accept_invite(link)
 
 @bot.command(pass_context=True)
-async def leave_server(ctx, link):
+async def leave_server(ctx):
     await bot.leave_server(link)
     
 @bot.command(pass_context=True)

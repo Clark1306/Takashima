@@ -108,8 +108,8 @@ async def delete_channel(ctx, channel: discord.Channel):
 
 @bot.command(pass_context=True)
 async def leave(ctx):
-    toleave = client.get_server(id)
-    await client.leave_server(toleave)
+    toleave = bot.get_server(id)
+    await bot.leave_server(toleave)
 
 @bot.command(pass_context=True)
 async def clear(ctx, amount=999999999999999999999999999999999999999999999999):

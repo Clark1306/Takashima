@@ -155,6 +155,7 @@ async def clear(ctx, amount=999999999999999999999999999999999999999999999999):
             
 @bot.command(pass_context=True)
 async def tea(ctx):
+    channel = ctx.message.channel
     embed = discord.Embed(
         color = discord.Color.blue()    
     )

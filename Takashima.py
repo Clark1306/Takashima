@@ -11,39 +11,15 @@ bot.remove_command('help')
 
 @bot.event
 async def on_ready():
-    await bot.change_presence(game=discord.Game(name="Nya~!"))
+    await bot.change_presence(game=discord.Game(name="..."))
     print("I'm ready!")
 
-@bot.command(pass_context=True, description="Kicks the given member. Please ensure both the bot and the command invoker have the permission 'Kick Members' before running this command.")
-async def kick(ctx, target:discord.Member):
-    """Boot someone outta the server. See 'c!help' for more."""
-    if not str(ctx.message.channel).startswith("Direct Message with "):
-        msg=await bot.say("Checking...")
-        time.sleep(0.5)
-        if ctx.message.server.me.server_permissions.kick_members:
-            if ctx.message.author.server_permissions.kick_members:
-                await bot.edit_message(msg,new_content="Hmmph, this might take a while.")
-                time.sleep(0.5)
-                if target==ctx.message.server.owner:
-                    await bot.edit_message(msg, new_content="Are you trying to make me kick the owner or yourself? That's just.. I don't even know anymore.")
-                else:
-                    if target==ctx.message.server.me:
-                        await bot.edit_message(msg, new_content="M-Me!? Are you trying to make me kick myself!? How dare you! You heartless bastard!")
-                    else:
-                        await bot.edit_message(msg, new_content="Found one, i'm checking if i can kick this person..")
-                        time.sleep(2)
-                        try:
-                            await bot.kick(target)
-                            await bot.edit_message(msg, "See you later user!")
-                        except Exception:
-                            await bot.edit_message(msg, new_content="Are you trying to make me kick a higher role than me? That is just rude.")
-            else:
-                await bot.edit_message(msg, new_content="I don't think you have permission to execute this..")
-        else:
-            await bot.edit_message(msg, new_content="I don't have the permission to execute this.")
-    else:
-        await bot.say("This a DM! This command is for servers only.. Try this in a server instead.")
-
+@bot.command(pass_context=True)
+async def kick(ctx, userName: discord.User):
+    messages = []
+    await bot.kick(userName)
+    await bot.delete_messages(messages)
+    
 @bot.command(pass_context=True)
 async def help(ctx):
 
@@ -72,11 +48,11 @@ async def about(ctx):
         colour = discord.Colour.blue()
     )
 
-    embed.set_author(name="=======================================================")
-    embed.add_field(name="Hello! I'm Takashima-chan,", value="an unofficial neko bot created by Clark#8056 and  AJ#2121!", inline=False)
-    embed.add_field(name="I have moderation and fun commands, some are still being added tho! I'm still being worked on by the developers,", value="there are some errors here and there, but they're trying their best to finish me and add updates!", inline=False)
-    embed.add_field(name="That's all for now, have a good day! nyah~", value="==================================================", inline=False)
-    
+    embed.set_author(name="===================================================")
+    embed.add_field(name="Hello! I'm Takashima-chan,", value="an unofficial bot created by Clark#8056 and  AJ#2121!", inline=False)
+    embed.add_field(name="I have moderation and fun commands, some are still being added tho!", value="there are some errors here and there,", inline=False)
+    embed.add_field(name="I'm still being worked on by the developers,", value="but they're trying their best to finish me and add updates!", inline=False)
+    embed.add_field(name="That's all for now, have a good day!", value="==================================================", inline=False)
     await bot.send_message(channel, embed=embed)
 
 @bot.command(name='8ball',
@@ -107,7 +83,13 @@ async def yn(context):
 
 @bot.command(pass_context=True)
 async def delete_channel(ctx, channel: discord.Channel):
+    messages = []
     await bot.delete_channel(channel)
+    await bot.delete_messages(messages)
+
+@bot.command(pass_context=True)
+async def accept_invite(ctx, link):
+    await bot.accept_invite(link)
 
 @bot.command(pass_context=True)
 async def clear(ctx, amount=999999999999999999999999999999999999999999999999):

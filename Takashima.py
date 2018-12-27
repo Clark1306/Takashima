@@ -55,7 +55,7 @@ async def help(ctx):
     embed.add_field(name="c!8ball", value="Answers your question!", inline=True)
     embed.add_field(name="===================================================", value="| Moderation Commands |", inline=False)
     embed.add_field(name="c!kick", value="Boots a user from your server.", inline=True)
-    embed.add_field(name="c!clear", value="Removes some of the messages."
+    embed.add_field(name="c!clear", value="Removes some of the messages." inline=True)
     embed.add_field(name="===================================================", value="| Other Commands |", inline=False)
     embed.add_field(name="c!about", value="No description..", inline=True)
     embed.set_footer(text="===================================================")

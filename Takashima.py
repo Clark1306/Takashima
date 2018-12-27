@@ -15,7 +15,7 @@ async def on_ready():
     print("I'm ready!")
 
 @bot.command(pass_context=True)
-async def kick(ctx, forbidden, userName: discord.User):
+async def kick(ctx, userName: discord.User):
     messages = []
     await bot.kick(userName)
     await bot.delete_messages(messages)

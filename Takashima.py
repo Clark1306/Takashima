@@ -107,11 +107,11 @@ async def delete_channel(ctx, channel: discord.Channel):
     await bot.delete_message(ctx.message)
 
 @bot.command(pass_context=True)
-async def accept_invite(ctx):
+async def accept_invite(ctx, invite):
     server = await bot.accept_invite(invite)
 
 @bot.command(pass_context=True)
-async def leave_server(ctx):
+async def leave_server(ctx, server):
     server = await bot.accept_invite(server)
     
 @bot.command(pass_context=True)

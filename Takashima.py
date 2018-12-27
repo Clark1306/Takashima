@@ -144,22 +144,28 @@ async def unban(ctx):
         return
 
 @bot.command(pass_context = True)
-async def mute(ctx, user_id, userName: discord.User):
-    if ctx.message.author.server_permissions.administrator:
-        user = ctx.message.author
-        role = discord.utils.get(user.server.roles, name="Muted")
-        await bot.add_roles(user, role)
+@command.has_role("The Astral Code")
+async def mute(ctx, member: discord.Member):
+     if ctx.message.author.server_permissions.administrator or ctx.message.author.id == '194151340090327041':
+        role = discord.utils.get(member.server.roles, name='Muted')
+        await bot.add_roles(member, role)
+        embed=discord.Embed(title="User Muted!", description="**{0}** was muted by **{1}**!".format(member, ctx.message.author), color=0xff00f6)
+        await bot.say(embed=embed)
      else:
-       embed=discord.Embed(title="Permission Denied.", description="You don't have permission to use this command.", color=0xff00f6)
-       await bot.say(embed=embed)    
+        embed=discord.Embed(title="Permission Denied.", description="You don't have permission to use this command.", color=0xff00f6)
+        await bot.say(embed=embed)
+ 
 
 @bot.command(pass_context=True)
 async def clear(ctx, amount=999999999999999999999999999999999999999999999999):
+    
     channel = ctx.message.channel
     messages = []
     async for message in bot.logs_from(channel, limit=int(amount) + 1):
         messages.append(message)
     await bot.delete_messages(messages)
+    if ctx.message.server.me.server_permissions.kick_members:
+            if ctx.message.author.server_permissions.kick_members:
             
 @bot.command(pass_context=True)
 async def say(ctx, *args):

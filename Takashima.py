@@ -124,7 +124,7 @@ async def special_help(ctx):
     
 @bot.command(pass_context=True)
 async def unban(ctx):
-    ban_list = await self.bot.get_bans(ctx.message.server)
+    ban_list = await bot.get_bans(ctx.message.server)
 
     # Show banned users
     await bot.say("Ban list:\n{}".format("\n".join([user.name for user in ban_list])))

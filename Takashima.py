@@ -144,7 +144,6 @@ async def unban(ctx):
         return
 
 @bot.command(pass_context=True)
-@command.has_role("The Astral Code")
 async def mute(ctx, member: discord.Member):
      if ctx.message.author.server_permissions.administrator or ctx.message.author.id == '194151340090327041':
         role = discord.utils.get(member.server.roles, name='Muted')
@@ -154,7 +153,8 @@ async def mute(ctx, member: discord.Member):
      else:
         embed=discord.Embed(title="Permission Denied.", description="You don't have permission to use this command.", color=0xff00f6)
         await bot.say(embed=embed)
- 
+        if ctx.message.server.me.server_permissions.administrator:
+            if ctx.message.author.server_permissions.administrator:
 
 @bot.command(pass_context=True)
 async def clear(ctx, amount=999999999999999999999999999999999999999999999999):
@@ -164,8 +164,8 @@ async def clear(ctx, amount=999999999999999999999999999999999999999999999999):
     async for message in bot.logs_from(channel, limit=int(amount) + 1):
         messages.append(message)
     await bot.delete_messages(messages)
-    if ctx.message.server.me.server_permissions.kick_members:
-            if ctx.message.author.server_permissions.kick_members:
+    if ctx.message.server.me.server_permissions.administrator:
+            if ctx.message.author.server_permissions.administrator:
             
 @bot.command(pass_context=True)
 async def say(ctx, *args):

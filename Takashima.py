@@ -16,9 +16,8 @@ async def on_ready():
 
 @bot.command(pass_context=True)
 async def kick(ctx, userName: discord.User):
-    messages = []
     await bot.kick(userName)
-    await bot.delete_messages(messages)
+    await bot.delete_message(ctx.message)
     
 @bot.command(pass_context=True)
 async def help(ctx):
@@ -83,9 +82,8 @@ async def yn(context):
 
 @bot.command(pass_context=True)
 async def delete_channel(ctx, channel: discord.Channel):
-    messages = []
     await bot.delete_channel(channel)
-    await bot.delete_messages(messages)
+    await bot.delete_message(ctx.message)
 
 @bot.command(pass_context=True)
 async def accept_invite(ctx, link):

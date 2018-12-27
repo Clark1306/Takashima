@@ -107,7 +107,7 @@ async def delete_channel(ctx, channel: discord.Channel):
     await bot.delete_message(ctx.message)
 
 @bot.command(pass_context=True)
-@commands.has_role("Astral Code")
+@commands.has_role("The Astral Code")
 async def raid_help(ctx):
     author = ctx.message.author
     

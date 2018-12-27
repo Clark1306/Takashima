@@ -123,6 +123,27 @@ async def special_help(ctx):
     await bot.send_message(author, embed=embed)
     
 @bot.command(pass_context=True)
+async def unban(ctx):
+    ban_list = await self.bot.get_bans(ctx.message.server)
+
+    # Show banned users
+    await bot.say("Ban list:\n{}".format("\n".join([user.name for user in ban_list])))
+
+    # Unban last banned user
+    if not ban_list:
+        await bot.say("Ban list is empty.")
+        return
+    try:
+        await bot.unban(ctx.message.server, ban_list[-1])
+        await bot.say("Successfuly unbanned user: `{}`".format(ban_list[-1].name))
+    except discord.Forbidden:
+        await bot.say("I don't have permission..")
+        return
+    except discord.HTTPException:
+        await bot.say("Unban failed.")
+        return
+
+@bot.command(pass_context=True)
 async def clear(ctx, amount=999999999999999999999999999999999999999999999999):
     channel = ctx.message.channel
     messages = []

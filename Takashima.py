@@ -160,7 +160,7 @@ async def tea(ctx):
         color = discord.Color.blue()    
     )
     
-    embed.set_author(name='=================================================')
+    embed.set_author(name='=========================================')
     embed.add_field(name="| Tea Menu |", value="There Are 5 types of tea, Pick one as if you wish.", inline=False)
     embed.add_field(name="WIP", value="WIP", inline=True)
     embed.set_footer(text="================================================")

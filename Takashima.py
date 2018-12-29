@@ -115,7 +115,7 @@ async def ban(self, ctx, user:discord.Member, *, reason:str=None):
             reason = bot.get("moderation.no_reason", ctx)
         reason += bot.get("moderation.banned_by", ctx).format(ctx.author)
         try:
-            await ctx.bot.ban(user, delete_message_days=0, reason=reason)
+            await ctx.guild.ban(user, delete_message_days=0, reason=reason)
         except discord.errors.Forbidden:
             if user.top_role.position == ctx.me.top_role.position:
                 await ctx.send(bot.get("moderation.no_ban_highest_role", ctx))

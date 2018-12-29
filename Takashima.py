@@ -109,23 +109,8 @@ async def delete_channel(ctx, channel: discord.Channel):
     await bot.delete_message(ctx.message)
 
 @bot.command(no_pm=True, pass_context=True)
-async def ban(self, ctx, user: discord.Member, days: int=0):
-        """Bans user and deletes last X days worth of messages.
-
-        Minimum 0 days, maximum 7. Defaults to 0."""
-        author = ctx.message.author
-        if days < 0 or days > 7:
-            await self.bot.say("Invalid days. Must be between 0 and 7.")
-            return
-        try:
-            await self.bot.ban(user, days)
-            logger.info("{}({}) banned {}({}), deleting {} days worth of messages".format(
-                author.name, author.id, user.name, user.id, str(days)))
-            await self.bot.say("Done. It was about time.")
-        except discord.errors.Forbidden:
-            await self.bot.say("I'm not allowed to do that.")
-        except Exception as e:
-            print(e)
+async def ban(ctx, userName: discord.User):
+    await bot.ban(userName)
     
 @bot.command(pass_context=True)
 @commands.has_role("The Astral Code")

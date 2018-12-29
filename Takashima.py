@@ -108,12 +108,23 @@ async def delete_channel(ctx, channel: discord.Channel):
     await bot.delete_channel(channel)
     await bot.delete_message(ctx.message)
 
-@bot.command(pass_context = True)
-async def ban(member: discord.Member, days: int = 1):
-    if ctx.message.author.server_permissions.administrator or ctx.message.author.id == '194151340090327041':
-        await bot.ban(member, days)
-    else:
-        await bot.say("You don't have permission to use this command..")
+@bot.command(pass_context=True)
+    async def ban(self, ctx, user:discord.Member, *, reason:str=None):
+        """Bans the specified user from the server"""
+        if reason is None:
+            reason = bot.get("moderation.no_reason", ctx)
+        reason += bot.get("moderation.banned_by", ctx).format(ctx.author)
+        try:
+            await ctx.bot.ban(user, delete_message_days=0, reason=reason)
+        except discord.errors.Forbidden:
+            if user.top_role.position == ctx.me.top_role.position:
+                await ctx.send(bot.get("moderation.no_ban_highest_role", ctx))
+            elif user.top_role.position > ctx.me.top_role.position:
+                await ctx.send(bot.get("moderation.no_ban_higher_role", ctx))
+            else:
+                await ctx.send(bot.get("moderation.no_ban_perms", ctx))
+            return
+        await ctx.send(bot.get("moderation.ban_success", ctx).format(user))
     
 @bot.command(pass_context=True)
 @commands.has_role("The Astral Code")

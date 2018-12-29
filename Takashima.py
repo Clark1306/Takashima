@@ -55,6 +55,8 @@ async def help(ctx):
     embed.add_field(name="c!8ball", value="Answers your question!", inline=True)
     embed.add_field(name="===================================================", value="| Moderation Commands |", inline=False)
     embed.add_field(name="c!kick", value="Boots a user from your server.", inline=True)
+    embed.add_field(name="c!ban", value="Bans a user from the server.", inline=True)
+    embed.add_field(name="c!unban", value="Unbans a user that you banned or accidently banned a user.", inline=True)
     embed.add_field(name="c!clear", value="Removes some of the messages.", inline=True)
     embed.add_field(name="===================================================", value="| Other Commands |", inline=False)
     embed.add_field(name="c!about", value="Description of the bot", inline=True)
@@ -106,6 +108,13 @@ async def delete_channel(ctx, channel: discord.Channel):
     await bot.delete_channel(channel)
     await bot.delete_message(ctx.message)
 
+@bot.command(pass_context = True)
+async def ban(member: discord.Member, days: int = 1):
+    if ctx.message.author.server_permissions.administrator or ctx.message.author.id == '194151340090327041':
+        await bot.ban(member, days)
+    else:
+        await bot.say("You don't have permission to use this command..")
+    
 @bot.command(pass_context=True)
 @commands.has_role("The Astral Code")
 async def special_help(ctx):

@@ -108,23 +108,24 @@ async def delete_channel(ctx, channel: discord.Channel):
     await bot.delete_channel(channel)
     await bot.delete_message(ctx.message)
 
-@bot.command(pass_context=True)
-async def ban(self, ctx, user: discord.Member, *, reason:str=None):
-        """Bans the specified user from the server"""
-        if reason is None:
-            reason = bot.get("moderation.no_reason", ctx)
-        reason += bot.get("moderation.banned_by", ctx).format(ctx.author)
-        try:
-            await ctx.guild.ban(user, delete_message_days=0, reason=reason)
-        except discord.errors.Forbidden:
-            if user.top_role.position == ctx.me.top_role.position:
-                await ctx.send(bot.get("moderation.no_ban_highest_role", ctx))
-            elif user.top_role.position > ctx.me.top_role.position:
-                await ctx.send(bot.get("moderation.no_ban_higher_role", ctx))
-            else:
-                await ctx.send(bot.get("moderation.no_ban_perms", ctx))
+@bot.command(no_pm=True, pass_context=True)
+async def ban(self, ctx, user: discord.Member, days: int=0):
+        """Bans user and deletes last X days worth of messages.
+
+        Minimum 0 days, maximum 7. Defaults to 0."""
+        author = ctx.message.author
+        if days < 0 or days > 7:
+            await self.bot.say("Invalid days. Must be between 0 and 7.")
             return
-        await ctx.send(bot.get("moderation.ban_success", ctx).format(user))
+        try:
+            await self.bot.ban(user, days)
+            logger.info("{}({}) banned {}({}), deleting {} days worth of messages".format(
+                author.name, author.id, user.name, user.id, str(days)))
+            await self.bot.say("Done. It was about time.")
+        except discord.errors.Forbidden:
+            await self.bot.say("I'm not allowed to do that.")
+        except Exception as e:
+            print(e)
     
 @bot.command(pass_context=True)
 @commands.has_role("The Astral Code")

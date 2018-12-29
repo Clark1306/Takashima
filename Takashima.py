@@ -109,7 +109,7 @@ async def delete_channel(ctx, channel: discord.Channel):
     await bot.delete_message(ctx.message)
 
 @bot.command(pass_context=True)
-async def ban(self, ctx, user:discord.Member, *, reason:str=None):
+async def ban(self, ctx, user: discord.Member, *, reason:str=None):
         """Bans the specified user from the server"""
         if reason is None:
             reason = bot.get("moderation.no_reason", ctx)

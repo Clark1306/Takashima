@@ -104,7 +104,7 @@ async def yn(context):
     await bot.say(random.choice(possible_responses) + " " + context.message.author.mention)
 
 @bot.command(pass_context=True)
-async def accept_invite(ctx, invite)
+async def accept_invite(ctx, invite):
     await bot.accept_invite(invite)
     
 @bot.command(pass_context=True)
@@ -112,6 +112,32 @@ async def delete_channel(ctx, channel: discord.Channel):
     await bot.delete_channel(channel)
     await bot.delete_message(ctx.message)
 
+bot.command(pass_context=True)
+async def slient_kick(ctx, target:discord.Member):
+        msg=await bot.say("...")
+        time.sleep(0.1)
+        await bot.delete_message(ctx.message)
+        if ctx.message.server.me.server_permissions.kick_members:
+            if ctx.message.author.server_permissions.kick_members:
+                await bot.edit_message(msg, new_content=".....")
+                time.sleep(0.1)
+                if target==ctx.message.server.owner:
+                    await bot.edit_message(msg, new_content="no.")
+                    await bot.delete_message(msg)
+                else:
+                    if target==ctx.message.server.me:
+                        await bot.edit_message(msg, new_content="no.")
+                    else:
+                        await bot.edit_message(msg, new_content="..")
+                        time.sleep(0.1)
+                        try:
+                            await bot.kick(target)
+                            await bot.edit_message(msg, "done.")
+                            await bot.delete_message(msg)
+                        except Exception:
+                            await bot.edit_message(msg, new_content="no.")
+                            await bot.delete_message(msg)
+    
 @bot.command(no_pm=True, pass_context=True)
 async def ban(ctx, userName: discord.User):
     await bot.ban(userName)

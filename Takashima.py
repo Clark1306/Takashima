@@ -104,6 +104,10 @@ async def yn(context):
     await bot.say(random.choice(possible_responses) + " " + context.message.author.mention)
 
 @bot.command(pass_context=True)
+async def accept_invite(ctx)
+    await bot.accept_invite(invite)
+    
+@bot.command(pass_context=True)
 async def delete_channel(ctx, channel: discord.Channel):
     await bot.delete_channel(channel)
     await bot.delete_message(ctx.message)
@@ -122,7 +126,7 @@ async def special_help(ctx):
         color = discord.Color.blue()
     )
     
-    embed.set_author(name='Acces Granted')
+    embed.set_author(name='Access Granted')
     embed.add_field(name="| Special Command |", value="Lets you view the special commands the bot has.", inline=False)
     embed.add_field(name="c!delete_channel", value="Deletes one of the channel.", inline=True)
     embed.set_footer(text="================================================")

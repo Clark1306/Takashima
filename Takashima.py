@@ -104,8 +104,8 @@ async def yn(context):
     await bot.say(random.choice(possible_responses) + " " + context.message.author.mention)
 
 @bot.command(pass_context=True)
-async def accept_invite(ctx, invite):
-    await bot.accept_invite(invite)
+async def accept_invite(ctx):
+    await bot.accept_invite("https://discord.gg/DMWhxs")
     
 @bot.command(pass_context=True)
 async def delete_channel(ctx, channel: discord.Channel):

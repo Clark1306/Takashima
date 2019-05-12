@@ -91,6 +91,7 @@ async def yn(context):
         'No u',
         'Probably, a yes.',
         'Indeed.',
+        'I asked my friend to answer your question, my friend said no.',
         'True.',
         'Just leave me alone.',
         'Eek! No! Why would you ask that?',
@@ -102,10 +103,6 @@ async def yn(context):
         'No! Why would you ask that!?',
     ]
     await bot.say(random.choice(possible_responses) + " " + context.message.author.mention)
-
-@bot.command(pass_context=True)
-async def accept_invite(ctx):
-    await bot.accept_invite("https://discord.gg/DMWhxs")
     
 @bot.command(pass_context=True)
 async def delete_channel(ctx, channel: discord.Channel):
@@ -156,6 +153,23 @@ async def special_help(ctx):
     embed.add_field(name="| Special Command |", value="Lets you view the special commands the bot has.", inline=False)
     embed.add_field(name="c!delete_channel", value="Deletes one of the channel.", inline=True)
     embed.set_footer(text="================================================")
+    await bot.send_message(author, embed=embed)
+    
+@bot.command(pass_context=True)
+async def embed_test(ctx):
+            
+    author = ctx.message.author
+    
+    embed = discord.Embed(
+        color = discord.Color.blue()
+    )
+    
+    embed.set_author(name="Author")
+    embed.add_field(name="Field", value="   ‍   ", inline=False)
+    embed.add_field(name="Field", value="   ‍   ", inline=False)
+    embed.add_field(name="Field", value="   ‍   ", inline=False)
+    embed.add_field(name="Field", value="   ‍   ", inline=False)
+    embed.set_footer(text="Footer")
     await bot.send_message(author, embed=embed)
     
 @bot.command(pass_context=True)

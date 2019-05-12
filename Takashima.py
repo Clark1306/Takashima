@@ -168,7 +168,7 @@ async def embed_test(ctx):
     embed.add_field(name="Field", value="   ‍   ", inline=False)
     embed.add_field(name="Field", value="   ‍   ", inline=False)
     embed.set_footer(text="Footer")
-    await bot.send_message(author, embed=embed)
+    await bot.send_message(channel, embed=embed)
     
 @bot.command(pass_context=True)
 async def unban(ctx):

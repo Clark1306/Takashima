@@ -157,11 +157,9 @@ async def special_help(ctx):
     
 @bot.command(pass_context=True)
 async def embed_test(ctx):
-            
-    author = ctx.message.author
-    
+    channel = ctx.message.channel
     embed = discord.Embed(
-        color = discord.Color.blue()
+        colour = discord.Colour.blue()
     )
     
     embed.set_author(name="Author")

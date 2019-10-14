@@ -16,7 +16,7 @@ async def on_ready():
 
 @bot.command(pass_context=True)
 async def kick(ctx, target:discord.Member):
-        msg=await bot.say("...")
+        msg=await bot.say("This is a DM chat, it won't work on it unless you do it on a server.")
         time.sleep(0.1)
         await bot.delete_message(ctx.message)
         if ctx.message.server.me.server_permissions.kick_members:

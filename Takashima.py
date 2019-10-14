@@ -11,7 +11,7 @@ bot.remove_command('help')
 
 @bot.event
 async def on_ready():
-    await bot.change_presence(game=discord.Game(name="with master"))
+    await bot.change_presence(game=discord.Game(name="with time and space"))
     print("I'm ready!")
 
 @bot.command(pass_context=True)

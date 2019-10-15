@@ -151,7 +151,6 @@ async def ban(ctx, userName: discord.User):
 @bot.command(pass_context=True)
 @commands.has_role("The Astral Code")
 async def special_help(ctx):
-    if ctx.message.author.server_permissions.administrator or ctx.message.author.id == '194151340090327041':
     
     author = ctx.message.author
     

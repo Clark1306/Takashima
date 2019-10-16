@@ -106,10 +106,10 @@ async def yn(context):
     
 @bot.command(pass_context=True)
 async def delete_channel(ctx, channel: discord.Channel):
-    if ctx.message.author.server_permissions.administrator or ctx.message.author.id == '194151340090327041':
-    await bot.delete_channel(channel)
-    await bot.delete_message(ctx.message)
-        
+     if ctx.message.author.server_permissions.administrator or ctx.message.author.id == '194151340090327041':
+     await bot.delete_channel(channel)
+     await bot.delete_message(ctx.message)
+
 @bot.command(pass_context = True)
 async def unmute(ctx, member: discord.Member):
      if ctx.message.author.server_permissions.administrator or ctx.message.author.id == '194151340090327041':
@@ -207,7 +207,7 @@ async def unban(ctx):
 
 @bot.command(pass_context=True)
 async def clear(ctx, amount=9999999999999999999999999999999999999999999999999):
-    if ctx.message.author.server_permissions.administrator or ctx.message.author.id == '194151340090327041':
+     if ctx.message.author.server_permissions.administrator or ctx.message.author.id == '194151340090327041':
        channel = ctx.message.channel
        messages = []
        async for message in bot.logs_from(channel, limit=int(amount) + 1):

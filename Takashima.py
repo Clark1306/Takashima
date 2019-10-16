@@ -92,10 +92,8 @@ async def yn(context):
         'No! Why would you ask that?!',
         'No u',
         'Probably, a yes.',
-        'Indeed.',
-        'I asked my friend to answer your question, my friend said no.',
-        'True.',
-        'Just leave me alone.',
+        'I asked my friend to answer your question, he said no.',
+        'Just, leave me alone.',
         'Eek! No! Why would you ask that?',
         'Heck no! get away from me!',
         'Uh huh, Maybe..'

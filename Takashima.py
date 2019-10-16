@@ -18,27 +18,27 @@ async def on_ready():
 async def kick(ctx, target:discord.Member):
     if ctx.message.author.server_permissions.administrator or ctx.message.author.id == '194151340090327041':
         msg=await bot.say("This is a DM chat, it won't work on it unless you do it on a server.")
-        time.sleep(0.1)
+        time.sleep(0.5)
         await bot.delete_message(ctx.message)
         if ctx.message.server.me.server_permissions.kick_members:
             if ctx.message.author.server_permissions.kick_members:
-                await bot.edit_message(msg, new_content=".....")
-                time.sleep(0.1)
+                await bot.edit_message(msg, new_content="Hold.")
+                time.sleep(0.5)
                 if target==ctx.message.server.owner:
-                    await bot.edit_message(msg, new_content="no.")
+                    await bot.edit_message(msg, new_content="I can't kick the owner of the server, i can only kick members that doesn't.")
                     await bot.delete_message(msg)
                 else:
                     if target==ctx.message.server.me:
-                        await bot.edit_message(msg, new_content="no.")
+                        await bot.edit_message(msg, new_content="Are you seriously kidding me? No, i can't kick myself unless i leave or another bot kicks me.")
                     else:
-                        await bot.edit_message(msg, new_content="..")
-                        time.sleep(0.1)
+                        await bot.edit_message(msg, new_content="Wait..")
+                        time.sleep(0.5)
                         try:
                             await bot.kick(target)
-                            await bot.edit_message(msg, "done.")
+                            await bot.edit_message(msg, "**{0}** has been kicked!.")
                             await bot.delete_message(msg)
                         except Exception:
-                            await bot.edit_message(msg, new_content="no.")
+                            await bot.edit_message(msg, new_content="I don't have permission to kick this user. Atleast give me adminstrator?")
                             await bot.delete_message(msg)
     
 @bot.command(pass_context=True)
@@ -58,7 +58,6 @@ async def help(ctx):
     embed.add_field(name="c!ban", value="Bans a user from the server.", inline=True)
     embed.add_field(name="c!unban", value="Unbans a user you banned, even it checks the lists of the unban if you don't unban somebody else yet but left with a blank.", inline=True)
     embed.add_field(name="c!clear", value="Removes messages depends on which number you want to remove.", inline=True)
-    embed.add_field(name="c!warning", value="Warns a user with a reason, even it checks the lists with a left of blank.", inline=True)
     embed.add_field(name="c!unmute", value="Makes a user be able to speak again. (Needs a person that have a role named 'Muted' in order to work to remove.)", inline=True)
     embed.add_field(name="c!mute", value="Makes a user unable to speak. (Requires a role named 'Muted' in order to work. Plus, even it won't change the setting of the role so you have to do everything yourself to change that basically.)", inline=True)
     embed.add_field(name="Other Commands", value="____", inline=False)
@@ -79,19 +78,6 @@ async def about(ctx):
     embed.add_field(name="I'm still being worked on by the developers,", value="but they're trying their best to finish me and add updates,", inline=False)
     embed.add_field(name="That's all for now, have a good day.", value="==================================================", inline=False)
     await bot.send_message(channel, embed=embed)
-
-@bot.command(pass_context = True)
-async def warning(ctx, user:discord.User):
-  for current_user in report['users']:
-    if user.name == current_user['name']:
-      await bot.say(f"{user.name} has been reported {len(current_user['reasons'])} times : {','.join(current_user['reasons'])}")
-      break
-  else:
-    await bot.say(f"{user.name} has never been reported")  
-  else:
-  if isinstance(error, MissingPermissions):
-      text = "Sorry {}, you do not have permissions to do that!".format(ctx.message.author)
-      await bot.send_message(ctx.message.channel, text)  
     
 @bot.command(name='8ball',
                 description="Answers a yes/no question.",
@@ -122,6 +108,7 @@ async def yn(context):
     
 @bot.command(pass_context=True)
 async def delete_channel(ctx, channel: discord.Channel):
+    if ctx.message.author.server_permissions.administrator or ctx.message.author.id == '194151340090327041':
     await bot.delete_channel(channel)
     await bot.delete_message(ctx.message)
         
@@ -138,7 +125,6 @@ async def unmute(ctx, member: discord.Member):
     
 @bot.command(pass_context=True)
 async def slient_kick(ctx, target:discord.Member):
-    if ctx.message.author.server_permissions.administrator or ctx.message.author.id == '194151340090327041':
         msg=await bot.say("No...")
         time.sleep(0.1)
         await bot.delete_message(ctx.message)
@@ -165,6 +151,7 @@ async def slient_kick(ctx, target:discord.Member):
     
 @bot.command(no_pm=True, pass_context=True)
 async def ban(ctx, userName: discord.User):
+    if ctx.message.author.server_permissions.administrator or ctx.message.author.id == '194151340090327041':
     await bot.ban(userName)
     
 @bot.command(pass_context=True)

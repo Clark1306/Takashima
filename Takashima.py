@@ -58,7 +58,7 @@ async def help(ctx):
     embed.add_field(name="c!ban", value="Bans a user from the server.", inline=True)
     embed.add_field(name="c!unban", value="Unbans a user that you banned or accidently banned a user.", inline=True)
     embed.add_field(name="c!clear", value="Removes messages depends on which number you want to remove.", inline=True)
-    embed.add_field(name="c!mute", value="Makes a user unable to speak. (Requires a role named 'Muted' in order to work.)", inline=True)
+    embed.add_field(name="c!mute", value="Makes a user unable to speak. (Requires a role named 'Muted' in order to work. Plus, even it won't change the setting of the role so you have to do everything yourself to change that basically.)", inline=True)
     embed.add_field(name="Other Commands", value="____", inline=False)
     embed.add_field(name="c!about", value="Description of the bot", inline=True)
     embed.set_footer(text="Version 1.0.0 Beta")
@@ -72,7 +72,7 @@ async def about(ctx):
     )
 
     embed.set_author(name="===================================================")
-    embed.add_field(name="Hello, I'm Astral Codex", value="an unofficial bot created by Clark#8056 and  AJ#2121,", inline=False)
+    embed.add_field(name="Hello, I'm Astral Codex", value="an unofficial bot created by Exequiel#8827 and  フォックスAJ#8539,", inline=False)
     embed.add_field(name="I have moderation and fun commands, some are still being added,", value="there are some errors here and there,", inline=False)
     embed.add_field(name="I'm still being worked on by the developers,", value="but they're trying their best to finish me and add updates,", inline=False)
     embed.add_field(name="That's all for now, have a good day.", value="==================================================", inline=False)

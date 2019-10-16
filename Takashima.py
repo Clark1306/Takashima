@@ -146,10 +146,32 @@ async def slient_kick(ctx, target:discord.Member):
                             await bot.edit_message(msg, new_content="no.")
                             await bot.delete_message(msg)
     
-@bot.command(no_pm=True, pass_context=True)
-async def ban(ctx, userName: discord.User):
+@bot.command(pass_context=True)
+async def ban(ctx, target:discord.Member):
     if ctx.message.author.server_permissions.administrator or ctx.message.author.id == '194151340090327041':
-    await bot.ban(userName)
+        msg=await bot.say("This is a DM chat, it won't work on it unless you do it on a server.")
+        time.sleep(0.5)
+        await bot.delete_message(ctx.message)
+        if ctx.message.server.me.server_permissions.kick_members:
+            if ctx.message.author.server_permissions.kick_members:
+                await bot.edit_message(msg, new_content="Hold.")
+                time.sleep(0.5)
+                if target==ctx.message.server.owner:
+                    await bot.edit_message(msg, new_content="I can't ban the owner of the server, i can only ban members that doesn't.")
+                    await bot.delete_message(msg)
+                else:
+                    if target==ctx.message.server.me:
+                        await bot.edit_message(msg, new_content="Are you seriously kidding me? No, i can't ban myself unless i leave or another bot bans me.")
+                    else:
+                        await bot.edit_message(msg, new_content="Wait..")
+                        time.sleep(0.5)
+                        try:
+                            await bot.ban(target)
+                            await bot.edit_message(msg, "**{0}** has been banned!.")
+                            await bot.delete_message(msg)
+                        except Exception:
+                            await bot.edit_message(msg, new_content="I don't have permission to kick this user. Atleast give me adminstrator?")
+                            await bot.delete_message(msg)
     
 @bot.command(pass_context=True)
 @commands.has_role("The Astral Code")

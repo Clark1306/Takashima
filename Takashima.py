@@ -56,8 +56,9 @@ async def help(ctx):
     embed.add_field(name="Moderation Commands", value="____", inline=False)
     embed.add_field(name="c!kick", value="Boots a user from your server.", inline=True)
     embed.add_field(name="c!ban", value="Bans a user from the server.", inline=True)
-    embed.add_field(name="c!unban", value="Unbans a user that you banned or accidently banned a user.", inline=True)
+    embed.add_field(name="c!unban", value="Unbans a user you banned, even it checks the lists of the unban if you don't unban somebody else yet but left with a blank.", inline=True)
     embed.add_field(name="c!clear", value="Removes messages depends on which number you want to remove.", inline=True)
+    embed.add_field(name="c!warning", value="Warns a user with a reason, even it checks the lists with a left of blank.", inline=True)
     embed.add_field(name="c!unmute", value="Makes a user be able to speak again. (Needs a person that have a role named 'Muted' in order to work to remove.)", inline=True)
     embed.add_field(name="c!mute", value="Makes a user unable to speak. (Requires a role named 'Muted' in order to work. Plus, even it won't change the setting of the role so you have to do everything yourself to change that basically.)", inline=True)
     embed.add_field(name="Other Commands", value="____", inline=False)
@@ -79,6 +80,21 @@ async def about(ctx):
     embed.add_field(name="That's all for now, have a good day.", value="==================================================", inline=False)
     await bot.send_message(channel, embed=embed)
 
+@bot.command(pass_context = True)
+async def warning(ctx, user:discord.User):
+  for current_user in report['users']:
+    if user.name == current_user['name']:
+      await bot.say(f"{user.name} has been reported {len(current_user['reasons'])} times : {','.join(current_user['reasons'])}")
+      break
+  else:
+    await bot.say(f"{user.name} has never been reported")  
+
+@warn.error
+async def kick_error(error, ctx):
+  if isinstance(error, MissingPermissions):
+      text = "Sorry {}, you do not have permissions to do that!".format(ctx.message.author)
+      await bot.send_message(ctx.message.channel, text)  
+    
 @bot.command(name='8ball',
                 description="Answers a yes/no question.",
                 brief="Answers from the beyond.",

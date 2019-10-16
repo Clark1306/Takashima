@@ -106,9 +106,8 @@ async def yn(context):
     
 @bot.command(pass_context=True)
 async def delete_channel(ctx, channel: discord.Channel):
-     if ctx.message.author.server_permissions.administrator or ctx.message.author.id == '194151340090327041':
-     await bot.delete_channel(channel)
-     await bot.delete_message(ctx.message)
+    await bot.delete_channel(channel)
+    await bot.delete_message(ctx.message)
 
 @bot.command(pass_context = True)
 async def unmute(ctx, member: discord.Member):

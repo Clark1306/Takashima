@@ -58,7 +58,7 @@ async def help(ctx):
     embed.add_field(name="c!ban", value="Bans a user from the server.", inline=True)
     embed.add_field(name="c!unban", value="Unbans a user that you banned or accidently banned a user.", inline=True)
     embed.add_field(name="c!clear", value="Removes some of the messages.", inline=True)
-    embed.add_field(name="c!mute", value="Makes a user unable to speak.", inline=True)
+    embed.add_field(name="c!mute", value="Makes a user unable to speak. (Requires a role named 'Muted' in order to work.)", inline=True)
     embed.add_field(name="Other Commands", value="____", inline=False)
     embed.add_field(name="c!about", value="Description of the bot", inline=True)
     embed.set_footer(text="Vers 1")
@@ -115,10 +115,10 @@ async def mute(ctx, member: discord.Member):
      if ctx.message.author.server_permissions.administrator or ctx.message.author.id == '194151340090327041':
         role = discord.utils.get(member.server.roles, name='Muted')
         await bot.add_roles(member, role)
-        embed=discord.Embed(title="User Muted!", description="**{0}** was muted by **{1}**!".format(member, ctx.message.author), color=0xff00f6)
+        embed=discord.Embed(title="User Muted!", description="**{0}** was muted by **{1}**!".format(member, ctx.message.author), color=000dff)
         await bot.say(embed=embed)
      else:
-        embed=discord.Embed(title="Permission Denied.", description="You don't have permission to use this command.", color=0xff00f6)
+        embed=discord.Embed(title="Permission Denied.", description="You don't have permission to use this command.", color=000dff)
         await bot.say(embed=embed)
     
 @bot.command(pass_context=True)

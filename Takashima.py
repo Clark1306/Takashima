@@ -88,9 +88,7 @@ async def warning(ctx, user:discord.User):
       break
   else:
     await bot.say(f"{user.name} has never been reported")  
-
-@warn.error
-async def kick_error(error, ctx):
+  else:
   if isinstance(error, MissingPermissions):
       text = "Sorry {}, you do not have permissions to do that!".format(ctx.message.author)
       await bot.send_message(ctx.message.channel, text)  

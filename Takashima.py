@@ -58,6 +58,7 @@ async def help(ctx):
     embed.add_field(name="c!ban", value="Bans a user from the server.", inline=True)
     embed.add_field(name="c!unban", value="Unbans a user that you banned or accidently banned a user.", inline=True)
     embed.add_field(name="c!clear", value="Removes messages depends on which number you want to remove.", inline=True)
+    embed.add_field(name="c!unmute", value="Makes a user be able to speak again. (Needs a person that have a role named 'Muted' in order to work to remove.)", inline=True)
     embed.add_field(name="c!mute", value="Makes a user unable to speak. (Requires a role named 'Muted' in order to work. Plus, even it won't change the setting of the role so you have to do everything yourself to change that basically.)", inline=True)
     embed.add_field(name="Other Commands", value="____", inline=False)
     embed.add_field(name="c!about", value="Description of the bot", inline=True)
@@ -122,7 +123,7 @@ async def mute(ctx, member: discord.Member):
         await bot.say(embed=embed)
         
 @bot.command(pass_context = True)
-async def mute(ctx, member: discord.Member):
+async def unmute(ctx, member: discord.Member):
      if ctx.message.author.server_permissions.administrator or ctx.message.author.id == '194151340090327041':
         role = discord.utils.get(member.server.roles, name='Muted')
         await bot.remove_roles(member, role)

@@ -57,7 +57,7 @@ async def help(ctx):
     embed.add_field(name="c!kick", value="Boots a user from your server.", inline=True)
     embed.add_field(name="c!ban", value="Bans a user from the server.", inline=True)
     embed.add_field(name="c!unban", value="Unbans a user that you banned or accidently banned a user.", inline=True)
-    embed.add_field(name="c!clear", value="Removes some of the messages.", inline=True)
+    embed.add_field(name="c!clear", value="Removes messages depends on which number you want to remove.", inline=True)
     embed.add_field(name="c!mute", value="Makes a user unable to speak. (Requires a role named 'Muted' in order to work.)", inline=True)
     embed.add_field(name="Other Commands", value="____", inline=False)
     embed.add_field(name="c!about", value="Description of the bot", inline=True)

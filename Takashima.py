@@ -61,7 +61,7 @@ async def help(ctx):
     embed.add_field(name="c!mute", value="Makes a user unable to speak. (Requires a role named 'Muted' in order to work.)", inline=True)
     embed.add_field(name="Other Commands", value="____", inline=False)
     embed.add_field(name="c!about", value="Description of the bot", inline=True)
-    embed.set_footer(text="Vers 1")
+    embed.set_footer(text="Version 1.0.0 Beta")
     await bot.send_message(author, embed=embed)
 
 @bot.command(pass_context=True)

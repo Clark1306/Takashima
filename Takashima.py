@@ -16,6 +16,7 @@ async def on_ready():
 
 @bot.command(pass_context=True)
 async def kick(ctx, target:discord.Member):
+    if ctx.message.author.server_permissions.administrator or ctx.message.author.id == '194151340090327041':
         msg=await bot.say("This is a DM chat, it won't work on it unless you do it on a server.")
         time.sleep(0.1)
         await bot.delete_message(ctx.message)
@@ -108,7 +109,8 @@ async def delete_channel(ctx, channel: discord.Channel):
     await bot.delete_channel(channel)
     await bot.delete_message(ctx.message)
 
-@bot.command(pass_context = True)#async def mute(ctx, user_id, userName: discord.User):
+@bot.command(pass_context = True)
+async def mute(ctx, user_id, userName: discord.User):
     if ctx.message.author.server_permissions.administrator:
         user = ctx.message.author
         role = discord.utils.get(user.server.roles, name="Muted")
@@ -119,7 +121,8 @@ async def delete_channel(ctx, channel: discord.Channel):
     
 @bot.command(pass_context=True)
 async def slient_kick(ctx, target:discord.Member):
-        msg=await bot.say("...")
+    if ctx.message.author.server_permissions.administrator or ctx.message.author.id == '194151340090327041':
+        msg=await bot.say("No...")
         time.sleep(0.1)
         await bot.delete_message(ctx.message)
         if ctx.message.server.me.server_permissions.kick_members:

@@ -58,9 +58,10 @@ async def help(ctx):
     embed.add_field(name="c!ban", value="Bans a user from the server.", inline=True)
     embed.add_field(name="c!unban", value="Unbans a user that you banned or accidently banned a user.", inline=True)
     embed.add_field(name="c!clear", value="Removes some of the messages.", inline=True)
+    embed.add_field(name="c!mute", value="Makes a user unable to speak.", inline=True)
     embed.add_field(name="Other Commands", value="____", inline=False)
     embed.add_field(name="c!about", value="Description of the bot", inline=True)
-    embed.set_footer(text="Ver 1")
+    embed.set_footer(text="Vers 1")
     await bot.send_message(author, embed=embed)
 
 @bot.command(pass_context=True)

@@ -79,6 +79,16 @@ async def about(ctx):
     embed.add_field(name="That's all for now, have a good day.", value="==================================================", inline=False)
     await bot.send_message(channel, embed=embed)
     
+@bot.command()
+async def choose(*choices: str):
+    """randomly chooses between multiple options"""
+    header = 'Bot has randomly chosen...'
+    text = random.choice(choices)
+
+    embed = discord.Embed()
+    embed.add_field(name=header, value=text, inline=True)
+    await bot.say(embed=embed)
+    
 @bot.command(name='8ball',
                 description="Answers a yes/no question.",
                 brief="Answers from the beyond.",
@@ -86,21 +96,26 @@ async def about(ctx):
                 pass_context=True)
 async def yn(context):
     possible_responses = [
-        'Ehhh, Maybe?',
-        'Yes.',
-        'No.',
-        'No! Why would you ask that?!',
-        'No u',
-        'Probably, a yes.',
-        'I asked my friend to answer your question, he said no.',
-        'Just, leave me alone.',
-        'Eek! No! Why would you ask that?',
-        'Heck no! get away from me!',
-        'Uh huh, Maybe..'
-        'I call thats a definitely a yes.',
-        'Probably?',
-        'Can we just talk about something else instead of that?',
-        'No! Why would you ask that!?',
+            'It is certain',
+            'It is decidedly so',
+            'Without a doubt',
+            'Yes definitely',
+            'You may rely on it',
+            'As I see it, yes',
+            'Most likely',
+            'Outlook good',
+            'Yes',
+            'Signs point to yes',
+            'Reply hazy try again',
+            'Ask again later',
+            'Better not tell you now',
+            'Cannot predict now',
+            'Concentrate and ask again',
+            'Do not count on it',
+            'My reply is no',
+            'My sources say no',
+            'Outlook not so good',
+            'Very doubtful'
     ]
     await bot.say(random.choice(possible_responses) + " " + context.message.author.mention)
     

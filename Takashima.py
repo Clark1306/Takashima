@@ -1,11 +1,13 @@
 import discord
 from discord.ext import commands
+from discord.ext.commands import Bot
 
 import asyncio
-import os
 import random
 import time
 import typing
+
+import os
 
 bot = commands.Bot(command_prefix="c!")
 bot.remove_command('help')
@@ -14,33 +16,6 @@ bot.remove_command('help')
 async def on_ready():
     await bot.change_presence(game=discord.Game(name="with time and space"))
     print("I'm ready!")
-
-@bot.command(pass_context=True)
-async def kick(ctx, target:discord.Member):
-    if ctx.message.author.server_permissions.administrator or ctx.message.author.id == '194151340090327041':
-        msg=await bot.say("This is a DM chat, it won't work on it unless you do it on a server.")
-        time.sleep(0.5)
-        await bot.delete_message(ctx.message)
-        if ctx.message.server.me.server_permissions.kick_members:
-            if ctx.message.author.server_permissions.kick_members:
-                await bot.edit_message(msg, new_content="Hold.")
-                time.sleep(0.5)
-                if target==ctx.message.server.owner:
-                    await bot.edit_message(msg, new_content="I can't kick the owner of the server, i can only kick members that doesn't.")
-                    await bot.delete_message(msg)
-                else:
-                    if target==ctx.message.server.me:
-                        await bot.edit_message(msg, new_content="Are you seriously kidding me? No, i can't kick myself unless i leave or another bot kicks me.")
-                    else:
-                        await bot.edit_message(msg, new_content="Wait..")
-                        time.sleep(0.5)
-                        try:
-                            await bot.kick(target)
-                            await bot.edit_message(msg, "**{0}** has been kicked!.")
-                            await bot.delete_message(msg)
-                        except Exception:
-                            await bot.edit_message(msg, new_content="I don't have permission to kick this user. Atleast give me adminstrator?")
-                            await bot.delete_message(msg)
     
 @bot.command(pass_context=True)
 async def help(ctx):
@@ -79,16 +54,6 @@ async def about(ctx):
     embed.add_field(name="I'm still being worked on by the developers,", value="but they're trying their best to finish me and add updates,", inline=False)
     embed.add_field(name="That's all for now, have a good day.", value="‍", inline=False)
     await bot.send_message(channel, embed=embed)
-    
-@bot.command()
-async def choose(*choices: str):
-    """randomly chooses between multiple options"""
-    header = 'Bot has randomly chosen...'
-    text = random.choice(choices)
-
-    embed = discord.Embed()
-    embed.add_field(name=header, value=text, inline=True)
-    await bot.say(embed=embed)
     
 @bot.command(name='8ball',
                 description="Answers a yes/no question.",
@@ -163,33 +128,6 @@ async def slient_kick(ctx, target:discord.Member):
                             await bot.delete_message(msg)
     
 @bot.command(pass_context=True)
-async def ban(ctx, target:discord.Member):
-    if ctx.message.author.server_permissions.administrator or ctx.message.author.id == '194151340090327041':
-        msg=await bot.say("This is a DM chat, it won't work on it unless you do it on a server.")
-        time.sleep(0.5)
-        await bot.delete_message(ctx.message)
-        if ctx.message.server.me.server_permissions.kick_members:
-            if ctx.message.author.server_permissions.kick_members:
-                await bot.edit_message(msg, new_content="Hold.")
-                time.sleep(0.5)
-                if target==ctx.message.server.owner:
-                    await bot.edit_message(msg, new_content="I can't ban the owner of the server, i can only ban members that doesn't.")
-                    await bot.delete_message(msg)
-                else:
-                    if target==ctx.message.server.me:
-                        await bot.edit_message(msg, new_content="Are you seriously kidding me? No, i can't ban myself unless i leave or another bot bans me.")
-                    else:
-                        await bot.edit_message(msg, new_content="Wait..")
-                        time.sleep(0.5)
-                        try:
-                            await bot.ban(target)
-                            await bot.edit_message(msg, "**{0}** has been banned!.")
-                            await bot.delete_message(msg)
-                        except Exception:
-                            await bot.edit_message(msg, new_content="I don't have permission to kick this user. Atleast give me adminstrator?")
-                            await bot.delete_message(msg)
-    
-@bot.command(pass_context=True)
 @commands.has_role("The Astral Code")
 async def special_help(ctx):
     
@@ -247,7 +185,7 @@ async def say(ctx, *args):
 
 
 @bot.command()
-@commands.is_owner()
+@command.is_owner()
 async def reload(ctx, cog):
     try:
         bot.unload_extension(f"cogs.{cog}")

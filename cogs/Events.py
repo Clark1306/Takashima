@@ -15,4 +15,4 @@ async def on_message(self, message):
         print("{} said {}".format(user, msg))
     
 def setup(bot):
-  bot.add_cog(Events(bot))
+  bot.add_cog{Events(bot)}

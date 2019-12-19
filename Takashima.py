@@ -238,36 +238,32 @@ async def unban(ctx):
     except discord.HTTPException:
         await bot.say("Unban failed.")
         return
-    
-#@bot.command(pass_context=True)
-#async def slap(ctx, members: commands.Greedy[discord.Member], *, reason='no reason'):
-#    slapped = ", ".join(x.name for x in members)
-#    await ctx.send('{} just got slapped for {}'.format(slapped, reason))
-
-@bot.command(pass_context=True)
-@bot.has_permissions(manage_messages=True)
-async def clear(self, ctx, amount: int):
-    channel = ctx.channel
-    await channel.purge(limit=amount+1)
-    
-    await bot.say(f"(amount) messages have been deleted")
-    await bot.delete_message(ctx.message)
-    
-@clear.error
-async def clear_error(self, ctx, error):
-    if isinstance(error, commands.CheckFailure):
-        await bot.say("You don't have permission to delete.")
-    elif isinstance(error, commands.MissingRequiredArgument):
-        await bot.say("There's no amount of numbers that i could delete.")
-    if isinstance(error, commands.BadArgument):
-        await bot.say("That's not a number.")
-        
-    raise error
 
 @bot.command(pass_context=True)
 async def say(ctx, *args):
     mesg = ' '.join(args)
     await bot.delete_message(ctx.message)
     return await bot.say(mesg)
+
+@bot.commands()
+@commands.is_owner()
+async def reload(ctx, cog):
+    try:
+        bot.unload_extension(f"cogs.{cog}")
+        bot.load_extension(f"cogs.{cog}")
+        await ctx.send(f"{cog} is reloaded")
+    except Exception as e:
+        print(f"Error: {cog} can't be loaded:")
+        raise e
+        
+
+for cog in os.listdir(".\\cogs")
+    if cog.endswith(".py")
+        try:
+            cog = f"cogs.{cog.replace('.py', '')}"
+            bot.load_extension(cog)
+        except Exception as e:
+            print(f"{cog} can't be loaded:")
+            raise e
 
 bot.run(os.environ['BOT_TOKEN'])

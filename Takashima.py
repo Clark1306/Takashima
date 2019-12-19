@@ -191,7 +191,6 @@ async def ban(ctx, target:discord.Member):
 @bot.command(pass_context=True)
 @commands.has_role("The Astral Code")
 async def special_help(ctx):
-    await bot.delete_message(ctx.message)
     
     author = ctx.message.author
     
@@ -213,10 +212,10 @@ async def embed_test(ctx):
     )
     
     embed.set_author(name="Author")
-    embed.add_field(name="Field", value="   ‍   ", inline=False)
-    embed.add_field(name="Field", value="   ‍   ", inline=False)
-    embed.add_field(name="Field", value="   ‍   ", inline=False)
-    embed.add_field(name="Field", value="   ‍   ", inline=False)
+    embed.add_field(name="Field", inline=False)
+    embed.add_field(name="Field", inline=False)
+    embed.add_field(name="Field", inline=False)
+    embed.add_field(name="Field", inline=False)
     embed.set_footer(text="Footer")
     await bot.send_message(channel, embed=embed)
     

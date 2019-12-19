@@ -255,10 +255,9 @@ async def reload(ctx, cog):
     except Exception as e:
         print(f"Error: {cog} can't be loaded:")
         raise e
-        
 
-for cog in os.listdir(".\\cogs")
-    if cog.endswith(".py")
+for cog in os.listdir(".\\cogs"):
+    if cog.endswith(".py"):
         try:
             cog = f"cogs.{cog.replace('.py', '')}"
             bot.load_extension(cog)

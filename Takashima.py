@@ -191,6 +191,7 @@ async def ban(ctx, target:discord.Member):
 @bot.command(pass_context=True)
 @commands.has_role("The Astral Code")
 async def special_help(ctx):
+    await bot.delete_message(ctx.message)
     
     author = ctx.message.author
     

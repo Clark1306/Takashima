@@ -5,6 +5,7 @@ import asyncio
 import os
 import random
 import time
+import typing
 
 bot = commands.Bot(command_prefix="c!")
 bot.remove_command('help')

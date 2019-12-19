@@ -2,8 +2,8 @@ import discord
 from discord.ext import commands
 
 class Events:
-  def _init_(self, bot):
-    self.bot + bot
+  def __init__(self, bot):
+    self.bot = bot
 
 async def on_message(self, message):
         if message.author == self.bot.user:
@@ -15,4 +15,4 @@ async def on_message(self, message):
         print("{} said {}".format(user, msg))
     
 def setup(bot):
-  bot.add_cog{Events(bot)}
+  bot.add_cog(Events(bot))

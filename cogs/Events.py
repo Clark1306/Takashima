@@ -1,5 +1,5 @@
 import discord
-from discord..ext import commands
+from discord.ext import commands
 
 class Events:
   def _init_(self, bot):

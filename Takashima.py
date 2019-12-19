@@ -185,7 +185,7 @@ async def say(ctx, *args):
 
 
 @bot.command()
-@discord.ext.commands.is_owner()
+#@commands.is_owner()
 async def reload(ctx, cog):
     try:
         bot.unload_extension(f"cogs.{cog}")
@@ -195,10 +195,7 @@ async def reload(ctx, cog):
         print(f"Error: {cog} can't be loaded:")
         raise e
 
-
-
-
-for cog in os.listdir(".\\cogs"):
+for cog in os.listdir("./cogs"):
     if cog.endswith(".py"):
         try:
             cog = f"cogs.{cog.replace('.py', '')}"

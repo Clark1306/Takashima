@@ -6,16 +6,14 @@ class Events:
     self.bot + bot
 
 @bot.event
-async def on_message(message):
-        if message.author == bot.user:
+async def on_message(self, message):
+        if message.author == self.bot.user:
             return
   
         user = message.author
         msg = message.content
         print(f"{user} said {msg}")
         print("{} said {}".format(user, msg))
-        
-       await.bot.process_commands(message)
     
 def setup(bot):
   bot.add_cog(Events(bot))

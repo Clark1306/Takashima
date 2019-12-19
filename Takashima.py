@@ -239,10 +239,10 @@ async def unban(ctx):
         await bot.say("Unban failed.")
         return
     
-@bot.command(pass_context=True)
-async def slap(ctx, members: commands.Greedy[discord.Member], *, reason='no reason'):
-    slapped = ", ".join(x.name for x in members)
-    await ctx.send('{} just got slapped for {}'.format(slapped, reason))
+#@bot.command(pass_context=True)
+#async def slap(ctx, members: commands.Greedy[discord.Member], *, reason='no reason'):
+#    slapped = ", ".join(x.name for x in members)
+#    await ctx.send('{} just got slapped for {}'.format(slapped, reason))
 
 @bot.command(pass_context=True)
 async def clear(ctx, amount=9999999999999999999999999999999999999999999999999):

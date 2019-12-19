@@ -185,7 +185,7 @@ async def say(ctx, *args):
 
 
 @bot.command()
-@command.is_owner()
+#@commands.is_owner()
 async def reload(ctx, cog):
     try:
         bot.unload_extension(f"cogs.{cog}")
@@ -194,6 +194,9 @@ async def reload(ctx, cog):
     except Exception as e:
         print(f"Error: {cog} can't be loaded:")
         raise e
+
+
+
 
 for cog in os.listdir(".\\cogs"):
     if cog.endswith(".py"):

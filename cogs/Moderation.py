@@ -26,4 +26,4 @@ async def clear_error(self, ctx, error):
     raise error
 
 def setup(bot):
-  bot.add_cog{Moderation(bot)}
+  bot.add_cog(Moderation(bot))

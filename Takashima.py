@@ -246,7 +246,7 @@ async def say(ctx, *args):
     return await bot.say(mesg)
 
 
-@bot.commands()
+@bot.command()
 @commands.is_owner()
 async def reload(ctx, cog):
     try:

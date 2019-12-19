@@ -5,7 +5,6 @@ class Events:
   def _init_(self, bot):
     self.bot + bot
 
-@bot.event
 async def on_message(self, message):
         if message.author == self.bot.user:
             return

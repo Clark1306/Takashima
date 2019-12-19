@@ -245,6 +245,7 @@ async def say(ctx, *args):
     await bot.delete_message(ctx.message)
     return await bot.say(mesg)
 
+
 @bot.commands()
 @commands.is_owner()
 async def reload(ctx, cog):

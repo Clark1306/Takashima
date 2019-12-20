@@ -192,8 +192,8 @@ async def reload(ctx, cog):
         bot.load_extension(f"cogs.{cog}")
         await ctx.send(f"{cog} is reloaded")
     except Exception as e:
-        print(f"Error: {cog} can't be loaded:")
-        raise e
+            print(f"{cog} can't be loaded:")
+            raise e
 
 for cog in os.listdir(".//cogs"):
     if cog.endswith(".py"):

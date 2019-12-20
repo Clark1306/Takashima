@@ -1,11 +1,11 @@
 import discord
 from discord.ext import commands
-from discord.ext.commands import Bot
+#from discord.ext.commands import Bot
 
 import asyncio
-import random
-import time
-import typing
+#import random
+#import time
+#import typing
 
 import os
 

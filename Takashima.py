@@ -185,7 +185,7 @@ async def say(ctx, *args):
 
 
 @bot.command()
-@commands.is_owner()
+#@commands.is_owner()
 async def reload(ctx, cog):
     try:
         bot.unload_extension(f"cogs.{cog}")

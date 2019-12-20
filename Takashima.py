@@ -24,7 +24,7 @@ async def reload(extension):
     try:
         bot.unload_extension(extension)
         bot.load_extension(extension)
-        await bot.say('{} Reloaded!".format(extension))
+        await bot.say('{} Reloaded!'.format(extension))
     except Exception as error:
         print("{} Can't be reloaded [{}]".format(extension, error))
 

@@ -29,11 +29,11 @@ async def reload(extension):
         print("{} Can't be reloaded [{}]".format(extension, error))
 
 if __name__ == '__main__':
-    for extension in extensions:
-        try:
-            bot.load_extension(extension)
-     except Exception as error:
-            print("{} Can't be reloaded [{}]".format(extension, error))
+	for extension in extensions:
+		try:
+			bot.load_extension(extension)
+		except Exception as error:
+			print("{} Can't be reloaded [{}]".format(extension, error))
              
 
 bot.run(os.environ['BOT_TOKEN'])

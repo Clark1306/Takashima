@@ -26,3 +26,4 @@ async def clear_error(self, ctx, error):
 
 def setup(bot):
   bot.add_cog(Moderation(bot))
+

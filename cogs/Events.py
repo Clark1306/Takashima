@@ -13,6 +13,9 @@ async def on_message(self, message):
         msg = message.content
         print(f"{user} said {msg}")
         print("{} said {}".format(user, msg))
+
+async def on_command_error(self, ctx, error):
+  if isinstance(error, commands.CheckFailure)
     
 def setup(bot):
   bot.add_cog(Events(bot))

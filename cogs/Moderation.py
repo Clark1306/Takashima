@@ -1,7 +1,7 @@
 import discord
 from discord.ext import commands
 
-class Moderation(commands.Cog):
+class Moderation:
 
   def __init__(self, bot):
     self.bot = bot

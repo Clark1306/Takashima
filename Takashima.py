@@ -195,7 +195,7 @@ async def reload(ctx, cog):
         print(f"Error: {cog} can't be loaded:")
         raise e
 
-for cog in os.listdir("./cogs"):
+for cog in os.listdir(".\\cogs"):
     if cog.endswith(".py"):
         try:
             cog = f"cogs.{cog.replace('.py', '')}"

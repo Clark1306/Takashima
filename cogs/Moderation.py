@@ -5,7 +5,7 @@ class Moderation:
   def __init__(self, bot):
     self.bot = bot
 
-@commands.command()
+@commands.command(pass_content=True)
 @commands.has_permissions(manage_messages=True)
 async def clear(self, ctx, amount: int):
     channel = ctx.channel

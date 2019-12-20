@@ -1,9 +1,12 @@
 import discord
 from discord.ext import commands
 
-class Moderation:
+class Moderation(commands.Cog):
+
   def __init__(self, bot):
     self.bot = bot
+
+
 
 @commands.command(pass_content=True)
 @commands.has_permissions(manage_messages=True)
